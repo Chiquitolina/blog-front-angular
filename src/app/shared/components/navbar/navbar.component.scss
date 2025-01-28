@@ -1,3 +1,24 @@
-a {
+.titulo {
     font-size: 2rem;
+    text-decoration: none;
 }
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 5rem;
+    font-size: 1rem;
+}
+
+.active {
+    background-color: red;
+}
+
+.nav-item:hover {
+    background-color: #F1F5F9;
+    border-radius: 0.5rem;
+}
+
+
+

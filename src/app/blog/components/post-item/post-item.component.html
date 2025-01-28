@@ -1,0 +1,28 @@
+<div class="w-100 col-3 bg-white card pb-4">
+  <div
+    class="w-100 d-flex flex-column justify-content-center align-items-center"
+  >
+    <a href="" [routerLink]="['/post', post.id]" class="w-100">
+      <img class="w-100" src="{{ post.img }}" alt="" />
+    </a>
+    <div class="w-75">
+      <p class="mt-3 text-primary">{{ post.categoria }}</p>
+      <strong class="century post-title">{{ post.titulo }}</strong>
+      <div class="d-flex mt-2">
+        <div class="d-flex align-items-center post-info">
+          <mat-icon class="m-1">calendar_today</mat-icon>
+          <span class="mt-1">{{ post.createdAt | date : "MMM d, y" }}</span>
+        </div>
+        <!-- <div class="d-flex align-items-center post-info">
+          <mat-icon>update</mat-icon>
+          <span>{{ post.updatedAt | date : "MMM d, y" }}</span>
+        </div> -->
+      </div>
+      <p class="mt-3 text-secondary description">{{ post.descripcion }}</p>
+    </div>
+
+    <form [formGroup]="formGroup">
+      <p-rating formControlName="value" [readonly]="true" />
+    </form>
+  </div>
+</div>

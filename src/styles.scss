@@ -1,11 +1,14 @@
 @import "primeicons/primeicons.css";
 
 * {
+  font-family: "URW Geometric", sans-serif;
 }
 html,
 body {
-  height: 100%;
+  min-height: 100vh;
 }
 body {
   margin: 0;
 }
+
+

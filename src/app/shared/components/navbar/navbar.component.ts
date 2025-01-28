@@ -3,23 +3,46 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { NavbarItems } from '../../../core/constants';
 import { MenuService } from '../../../core/services/menu/menu.service';
-
+import { RouterModule } from '@angular/router';
+import { PostsService } from '../../services/posts/posts.service';
 @Component({
   selector: 'app-navbar',
-  imports: [MenubarModule],
+  imports: [MenubarModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-
   items: MenuItem[] | undefined;
 
-  constructor(private menuServ: MenuService) {}
+  constructor(private menuServ: MenuService, private postServ: PostsService) {}
 
   ngOnInit() {
-    this.items = Object.values(NavbarItems).map((item) => ({
+    this.items = (Object.values(NavbarItems) as NavbarItems[]).map((item) => ({
       label: item,
-      command: () => this.menuServ.updateSelectedNavbarItem(item)
-    }))
+    }));
   }
+
+  filterByItemSelected(item: NavbarItems) {
+    this.postServ.getPostByCategory(item).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.postServ.setPosts(data.result.data);
+      },
+      error: (error: Error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  onClickMenuItem(item: string | undefined) {
+    this.menuServ.updateSelectedNavbarItem(item),
+      this.filterByItemSelected(
+        item ? (item as NavbarItems) : NavbarItems.Angular
+      );
+  }
+
+  isSelected(item: NavbarItems): boolean {
+    return this.menuServ.selectedNavbarItem() === (item as NavbarItems);
+  }
+  
 }

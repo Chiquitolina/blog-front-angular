@@ -11,7 +11,8 @@
         Forms = 'Formularios',
         RxJS = 'RxJS',
         Optimización = 'Optimización y Performance',
-        DeepInsights = 'Deep Insights'
+        DeepInsights = 'Deep Insights',
+        Subcategoria = 'Subcategoria'
     }
     
     export enum EstructurasyAlgoritmosSubcategories {

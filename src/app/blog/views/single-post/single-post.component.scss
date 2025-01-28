@@ -1,0 +1,103 @@
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+a {
+  text-decoration: none;
+  color: #6c757d;
+}
+
+h3:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 1rem;
+}
+
+.century {
+  font-family: "Century 751 W01 Roman";
+}
+
+.share {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.share-img {
+  width: 1.25rem;
+  margin: 0.25rem;
+}
+
+.share-img-cont {
+  background-color: #e5f7fd;
+  padding: 0.25rem;
+  border-radius: 8rem;
+  margin-right: 0.75rem;
+}
+
+.post-title {
+  font-size: 1.75rem;
+}
+
+.post-img {
+  border-radius: 0 5rem 0 5rem;
+}
+
+.side {
+  animation: slideInFromLeft 2s ease-out;
+}
+
+.left-titles {
+  font-size: 2rem;
+}
+
+.post-side {
+  border-radius: 0 5rem 0 5rem;
+  animation: slideInFromRight 1s ease-out;
+  padding-bottom: 3rem;
+}
+
+.info {
+  width: 90%;
+}
+
+.cont {
+  margin-top: 5rem;
+}
+
+.post-content {
+  font-size: 1.25rem;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
