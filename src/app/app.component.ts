@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ScrollUpService } from './shared/services/scroll-up/scroll-up.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, FooterComponent, NavbarComponent],
@@ -10,4 +11,6 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 })
 export class AppComponent {
   title = 'devtacora';
+
+  scrollUpServ = inject(ScrollUpService)
 }
