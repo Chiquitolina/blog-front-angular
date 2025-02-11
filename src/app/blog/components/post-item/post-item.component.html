@@ -21,8 +21,8 @@
       <p class="mt-3 text-secondary description">{{ post.descripcion }}</p>
     </div>
 
-    <form [formGroup]="formGroup">
-      <p-rating formControlName="value" [readonly]="true" />
+    <form>
+      <p-rating [readonly]="true" [(ngModel)]="post.avgRating" name="avgRating" />
     </form>
   </div>
 </div>

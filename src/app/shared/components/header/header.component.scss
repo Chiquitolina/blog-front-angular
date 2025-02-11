@@ -10,6 +10,10 @@ input {
     width: 30rem;
 }
 
+h1 {
+    font-size: 2.25rem;
+}
+
 @media (max-width: 768px) {
     input {
         width: 20rem;

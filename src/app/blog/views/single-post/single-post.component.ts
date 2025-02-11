@@ -14,6 +14,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms'; // Importar FormsModule
 import { catchError, of, switchMap } from 'rxjs';
+import { ConfirmRatingDialogComponent } from '../../components/confirm-rating-dialog/confirm-rating-dialog.component';
+import { PostRatingsService } from '../../../shared/services/postRatings/post-ratings.service';
 
 @Component({
   selector: 'app-single-post',
@@ -22,6 +24,7 @@ import { catchError, of, switchMap } from 'rxjs';
     CommonModule,
     CardModule,
     PostsDisplayComponent,
+    ConfirmRatingDialogComponent,
     RouterModule,
     RatingModule,
     ReactiveFormsModule,
@@ -34,27 +37,50 @@ export class SinglePostComponent {
   formGroup!: FormGroup;
 
   post: any;
+  postRatingData: any;
   recentPosts: any;
 
-  constructor(private postServ: PostsService, private route: ActivatedRoute) {
+  isDialogVisible = false;
+
+  constructor(
+    private postServ: PostsService,
+    private route: ActivatedRoute,
+    private postRatingServ: PostRatingsService
+  ) {
     // Suscribirse a los cambios en la URL para actualizar el post dinámicamente
     this.route.paramMap
       .pipe(
         switchMap((params) => {
           const id = Number(params.get('id'));
           if (isNaN(id)) return of(null); // Si el ID no es válido, devuelve un observable vacío
+
           return this.postServ.getPostById(id).pipe(
             catchError((err) => {
               console.error('Error al obtener el post', err);
-              return of(null); // Devuelve un observable vacío en caso de error
+              return of(null);
             })
           );
+        }),
+        switchMap((postData) => {
+          if (!postData?.result?.data) return of(null); // Si no hay post, no buscar rating
+          this.post = postData.result.data;
+          console.log('POST:', this.post)
+          console.log('POST ID:', this.post.id);
+          return this.postRatingServ
+            .getRatingById(postData.result.data.id)
+            .pipe(
+              catchError(() => of(null)) // Manejo de errores en la segunda llamada
+            );
         })
       )
       .subscribe({
-        next: (data) => {
-          this.post = data?.result?.data || null;
+        next: (ratingData: any) => {
+          this.postRatingData = ratingData?.result?.data;
+          this.formGroup
+            .get('rating')
+            ?.setValue(this.postRatingData.averageRating);
         },
+        error: (err) => console.error('Error en el stream:', err),
       });
 
     // Llamada para obtener los 5 posts más recientes
@@ -68,7 +94,39 @@ export class SinglePostComponent {
     });
 
     this.formGroup = new FormGroup({
-      value: new FormControl(4),
+      rating: new FormControl(4),
+    });
+  }
+
+  openDialog() {
+    this.isDialogVisible = true;
+  }
+
+  onDialogClosed() {
+    this.isDialogVisible = false; // Resetea el estado cuando se cierra
+  }
+
+  fetchPostRating(postId: number) {
+    this.postRatingServ.getRatingById(postId).subscribe({
+      next: (data) => {},
+      error: () => {},
+    });
+  }
+
+  uploadRate() {
+    this.postRatingServ.getRatingById(this.post.id).subscribe({
+      next: (data: any) => {
+        this.postRatingData = data?.result?.data;
+        this.formGroup
+          .get('rating')
+          ?.setValue(this.postRatingData.averageRating);
+      },
+      error: () => {},
+      complete: () => {
+        this.postRatingServ
+          .getIsFetchingPostLoader()
+          .set({ status: 'idle' });
+      },
     });
   }
 }

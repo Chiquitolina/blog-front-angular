@@ -1,0 +1,40 @@
+<p-dialog
+  header="Confirmar Valoración"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem' }"
+  (onHide)="onDialogHide()"
+>
+  @if (isCreatingRate().status == 'idle' ) {
+  <form
+    class="w-100 d-flex flex-column align-items-center justify-content-center"
+    [formGroup]="formGroup"
+  >
+    <p-rating formControlName="rating" />
+    <p class="mt-2">¿Desea confirmar esta valoración?</p>
+    <p-button (click)="onConfirmRate()" label="Confirmar" />
+    <p-button (click)="onDialogHide()" class="mt-2" label="Cancelar" />
+  </form>
+  } @if (isCreatingRate().status == 'loading' ) {
+  <div class="w-100 d-flex justify-content-center mt-4">
+    <mat-spinner class="mb-5" color="primary"></mat-spinner>
+  </div>
+  } @if (isCreatingRate().status == 'finished' ) {
+  <div
+    class="d-flex flex-column align-items-center w-100 justify-content-center"
+  >
+    <ng-lottie
+      width="200px"
+      heigth="200px"
+      [options]="options"
+      (animationCreated)="animationCreated($event)"
+    />
+    <p>{{ isCreatingRate().message }}</p>
+    <p-button
+      (click)="onDialogHide(); updateRate()"
+      class="mt-2"
+      label="Cerrar"
+    />
+  </div>
+  }
+</p-dialog>
