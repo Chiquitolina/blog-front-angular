@@ -13,6 +13,7 @@ import { PostsService } from '../../services/posts/posts.service';
 })
 export class NavbarComponent {
   items: MenuItem[] | undefined;
+  activeItem: string | undefined = 'Angular';
 
   constructor(private menuServ: MenuService, private postServ: PostsService) {}
 
@@ -35,6 +36,7 @@ export class NavbarComponent {
   }
 
   onClickMenuItem(item: string | undefined) {
+    this.activeItem = item;
     this.menuServ.updateSelectedNavbarItem(item),
       this.filterByItemSelected(
         item ? (item as NavbarItems) : NavbarItems.Angular
@@ -44,5 +46,10 @@ export class NavbarComponent {
   isSelected(item: NavbarItems): boolean {
     return this.menuServ.selectedNavbarItem() === (item as NavbarItems);
   }
-  
+
+  resetMenus() {
+    this.activeItem = NavbarItems.Angular;
+    this.menuServ.updateSelectedNavbarItem(NavbarItems.Angular),
+      this.filterByItemSelected(NavbarItems.Angular);
+  }
 }

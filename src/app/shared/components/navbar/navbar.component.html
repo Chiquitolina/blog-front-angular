@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo -->
     <div class="d-flex align-items-center col-7">
-      <a class="text-black titulo" [routerLink]="['']"> DevTácora </a>
+      <img [routerLink]="['']" (click)="resetMenus()" width="250" src="assets/devtacora.png" alt="">
     </div>
 
     <!-- Botón Hamburguesa -->
@@ -20,11 +20,18 @@
 
     <!-- Menú colapsable -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100">
+      <ul
+        class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100"
+      >
         <!-- Iteración de categorías -->
         @for (item of items; track item) {
         <li class="nav-item" (click)="onClickMenuItem(item.label)">
-          <a class="nav-link" href="#">{{ item.label }}</a>
+          <a
+            class="nav-link"
+            [routerLink]="['']"
+            [class.active]="activeItem === item.label"
+            >{{ item.label }}</a
+          >
         </li>
         }
       </ul>

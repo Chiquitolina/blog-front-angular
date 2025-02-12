@@ -11,11 +11,17 @@ nav {
     font-size: 1rem;
 }
 
-.active {
-    background-color: red;
+.nav-link {
+    margin-right: 0.5rem;
 }
 
+
 .nav-item:hover {
+    background-color: #F1F5F9;
+    border-radius: 0.5rem;
+}
+
+.active {
     background-color: #F1F5F9;
     border-radius: 0.5rem;
 }
