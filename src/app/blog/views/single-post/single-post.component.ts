@@ -16,6 +16,9 @@ import {
 import { catchError, of, switchMap } from 'rxjs';
 import { ConfirmRatingDialogComponent } from '../../components/confirm-rating-dialog/confirm-rating-dialog.component';
 import { PostRatingsService } from '../../../shared/services/postRatings/post-ratings.service';
+import { LinkedinAuthService } from '../../../core/services/linkedin-auth/linkedin-auth.service';
+import { RecentPostCarouselComponent } from '../../components/recent-post-carousel/recent-post-carousel.component';
+import { CategoryService } from '../../../shared/services/categories/category.service';
 
 @Component({
   selector: 'app-single-post',
@@ -29,6 +32,7 @@ import { PostRatingsService } from '../../../shared/services/postRatings/post-ra
     RatingModule,
     ReactiveFormsModule,
     FormsModule,
+    RecentPostCarouselComponent,
   ],
   templateUrl: './single-post.component.html',
   styleUrl: './single-post.component.scss',
@@ -39,13 +43,16 @@ export class SinglePostComponent {
   post: any;
   postRatingData: any;
   recentPosts: any;
+  mostRankedCategories: any;
 
   isDialogVisible = false;
 
   constructor(
     private postServ: PostsService,
     private route: ActivatedRoute,
-    private postRatingServ: PostRatingsService
+    private postRatingServ: PostRatingsService,
+    private linkedinAuth: LinkedinAuthService,
+    private categoryServ: CategoryService
   ) {
     // Suscribirse a los cambios en la URL para actualizar el post dinámicamente
     this.route.paramMap
@@ -64,7 +71,7 @@ export class SinglePostComponent {
         switchMap((postData) => {
           if (!postData?.result?.data) return of(null); // Si no hay post, no buscar rating
           this.post = postData.result.data;
-          console.log('POST:', this.post)
+          console.log('POST:', this.post);
           console.log('POST ID:', this.post.id);
           return this.postRatingServ
             .getRatingById(postData.result.data.id)
@@ -96,6 +103,15 @@ export class SinglePostComponent {
     this.formGroup = new FormGroup({
       rating: new FormControl(4),
     });
+
+    this.categoryServ.getMostRanked().subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.mostRankedCategories = data.result.data || []},
+      error: (error: Error) => {
+        console.error('Error al obtener el ranking de categorías.', error);
+      }
+    })
   }
 
   openDialog() {
@@ -123,10 +139,23 @@ export class SinglePostComponent {
       },
       error: () => {},
       complete: () => {
-        this.postRatingServ
-          .getIsFetchingPostLoader()
-          .set({ status: 'idle' });
+        this.postRatingServ.getIsFetchingPostLoader().set({ status: 'idle' });
       },
     });
+  }
+
+  compartirEnLinkedIn() {
+    this.linkedinAuth.shareOnLinkedIn();
+  }
+
+  fetchMostRankedCategories() {
+    this.categoryServ.getMostRanked().subscribe({
+      next: (data: any) => {
+        this.mostRankedCategories = data.result.data
+      },
+      error: (error: Error) => {
+        console.error('Error al obtener el ranking de categorías.', error);
+      }
+    })
   }
 }

@@ -1,17 +1,27 @@
-import { Component, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { NavbarItems } from '../../../core/constants';
 import { MenuService } from '../../../core/services/menu/menu.service';
 import { RouterModule } from '@angular/router';
 import { PostsService } from '../../services/posts/posts.service';
+import { Collapse } from 'bootstrap';
 @Component({
   selector: 'app-navbar',
   imports: [MenubarModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
+  @ViewChild('navbarSupportedContent', { static: false }) navbarCollapse!: ElementRef;
+  bsCollapse!: Collapse | null;
+
   items: MenuItem[] | undefined;
   activeItem: string | undefined = 'Angular';
 
@@ -22,6 +32,15 @@ export class NavbarComponent {
       label: item,
     }));
   }
+
+  ngAfterViewInit() {
+    if (this.navbarCollapse) {
+      this.bsCollapse = new Collapse(this.navbarCollapse.nativeElement, {
+        toggle: false,
+      });
+    }
+  }
+  
 
   filterByItemSelected(item: NavbarItems) {
     this.postServ.getPostByCategory(item).subscribe({
@@ -52,4 +71,11 @@ export class NavbarComponent {
     this.menuServ.updateSelectedNavbarItem(NavbarItems.Angular),
       this.filterByItemSelected(NavbarItems.Angular);
   }
+
+  closeNavbar() {
+    if (this.bsCollapse) {
+      this.bsCollapse.hide();
+    }
+  }
+  
 }

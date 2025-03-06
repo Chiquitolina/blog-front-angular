@@ -3,6 +3,10 @@
     text-decoration: none;
 }
 
+.navbar-banner {
+    cursor: pointer;
+}
+
 nav {
     position: sticky;
     top: 0;
@@ -17,8 +21,8 @@ nav {
 
 
 .nav-item:hover {
-    background-color: #F1F5F9;
     border-radius: 0.5rem;
+    background-color: #F1F5F9;
 }
 
 .active {

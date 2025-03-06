@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo -->
     <div class="d-flex align-items-center col-7">
-      <img [routerLink]="['']" (click)="resetMenus()" width="250" src="assets/devtacora.png" alt="">
+      <img class="navbar-banner" [routerLink]="['']" (click)="resetMenus()" width="250" src="assets/devtacora.png" alt="">
     </div>
 
     <!-- Botón Hamburguesa -->
@@ -19,15 +19,15 @@
     </button>
 
     <!-- Menú colapsable -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" #navbarSupportedContent>
       <ul
         class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100"
       >
         <!-- Iteración de categorías -->
         @for (item of items; track item) {
-        <li class="nav-item" (click)="onClickMenuItem(item.label)">
+        <li class="nav-item" (click)="onClickMenuItem(item.label); closeNavbar()">
           <a
-            class="nav-link"
+            class="nav-link text-center"
             [routerLink]="['']"
             [class.active]="activeItem === item.label"
             >{{ item.label }}</a

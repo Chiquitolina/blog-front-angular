@@ -1,59 +1,81 @@
-<div class="d-flex cont">
-  <div class="col-4 side">
-    <h2 class="century mb-5">Posts recientes</h2>
-    @for (recentPost of recentPosts; track recentPost) {
-    <div class="mt-5 text-secondary">
-      <a href="" [routerLink]="['/post', recentPost.id]">
-        <h3 class="century">{{ recentPost.titulo }}</h3>
-      </a>
-      <div class="d-flex align-items-center">
-        <mat-icon class="m-1">calendar_today</mat-icon>
-        <span class="mt-1 date">{{
-          recentPost.createdAt | date : "MMMM d, y"
-        }}</span>
+<div class="container">
+  <div class="row g-0">
+    <!-- Columna de post principal (debe estar primero en móviles) -->
+    <div
+      class="col-xl-8 order-1 order-md-2 col-md-12 bg-white d-flex flex-column align-items-center post-side"
+    >
+      <img class="w-100 post-img mb-5" src="{{ post?.img }}" alt="" />
+      <div class="info">
+        <b class="century mt-3 post-title">{{ post?.titulo }}</b>
+        <div class="w-100 d-flex justify-content-between">
+          <div class="d-flex align-items-center mt-2">
+            <mat-icon class="m-1">calendar_today</mat-icon>
+            <span class="mt-1 date">{{
+              post?.createdAt | date : "MMMM d, y"
+            }}</span>
+          </div>
+          <form class="mt-3" [formGroup]="formGroup">
+            <p-rating (click)="openDialog()" formControlName="rating" />
+            <p class="mt-2 av-rat">
+              Average Rating:
+              {{ this.postRatingData?.averageRating.toFixed(1) }}
+            </p>
+          </form>
+        </div>
+        <p class="mt-4 mb-5 post-content">{{ post?.contenido }}</p>
+        <div class="d-flex align-items-center p-2">
+          <b class="century share">Compartí este post</b>
+          <div class="share-img-cont">
+            <img
+              (click)="compartirEnLinkedIn()"
+              class="share-img"
+              src="/assets/lin-logo.png"
+              alt=""
+            />
+          </div>
+          <div class="share-img-cont">
+            <img class="share-img" src="/assets/twitter-logo.png" alt="" />
+          </div>
+        </div>
       </div>
-
-      <form class="mt-3">
-        <p-rating [readonly]="true" [(ngModel)]="recentPost.avgRating" name="avgRating" />
-      </form>
     </div>
-    }
-    <h2 class="mt-5 century">Categorías Top</h2>
-  </div>
 
-  <div class="col-8 bg-white d-flex flex-column align-items-center post-side">
-    <img class="w-100 post-img mb-5" src="{{ post?.img }}" alt="" />
-    <div class="info">
-      <b class="century mt-3 post-title">{{ post?.titulo }}</b>
-      <div class="w-100 d-flex justify-content-between">
-        <div class="d-flex align-items-center mt-2">
+    <!-- Columna de post recientes -->
+    <div
+      class="col-xl-4 col-md-12 side order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none"
+    >
+      <h2 class="century mb-5">Posts recientes</h2>
+      @for (recentPost of recentPosts; track recentPost) {
+      <div class="mt-5 text-secondary">
+        <a href="" [routerLink]="['/post', recentPost.id]">
+          <h3 class="century">{{ recentPost.titulo }}</h3>
+        </a>
+        <div class="d-flex align-items-center">
           <mat-icon class="m-1">calendar_today</mat-icon>
           <span class="mt-1 date">{{
-            post?.createdAt | date : "MMMM d, y"
+            recentPost.createdAt | date : "MMMM d, y"
           }}</span>
         </div>
-        <form class="mt-3" [formGroup]="formGroup">
-          <p-rating (click)="openDialog()" formControlName="rating" />
-          <p class="mt-2 av-rat">Average Rating: {{this.postRatingData?.averageRating.toFixed(1)}}</p>
+        <form class="mt-3">
+          <p-rating
+            [readonly]="true"
+            [(ngModel)]="recentPost.avgRating"
+            name="avgRating"
+          />
         </form>
-        <!--   <div class="d-flex align-items-center">
-        <mat-icon>update</mat-icon>
-        <span>{{ post.updatedAt | date : "MMM d, y, h:mm:ss a" }}</span>
-      </div> -->
       </div>
-
-      <p class="mt-4 mb-5 post-content">{{ post?.contenido }}</p>
-
-      <div class="d-flex align-items-center p-2">
-        <b class="century share">Compartí este post</b>
-        <div class="share-img-cont">
-          <img class="share-img" src="/assets/lin-logo.png" alt="" />
-        </div>
-        <div class="share-img-cont">
-          <img class="share-img" src="/assets/twitter-logo.png" alt="" />
-        </div>
+      }
+      <h2 class="mt-5 century">Categorías Top</h2>
+      @for (category of mostRankedCategories; track category) {
+      <div class="mt-4">
+        <h3 class="century text-secondary">0{{mostRankedCategories.indexOf(category) + 1}}/ {{category.categoria}}</h3>
       </div>
+      }
     </div>
+    <app-recent-post-carousel
+      class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-1 mt-5"
+      [recentPosts]="recentPosts"
+    ></app-recent-post-carousel>
   </div>
 </div>
 <div>
@@ -62,7 +84,7 @@
 <app-confirm-rating-dialog
   (afterRated)="uploadRate()"
   [visible]="isDialogVisible"
-  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }"  
+  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }"
   (visibleChange)="onDialogClosed()"
 >
 </app-confirm-rating-dialog>

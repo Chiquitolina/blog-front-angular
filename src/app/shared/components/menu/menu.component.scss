@@ -1,3 +1,18 @@
+nav {
+    font-size: 1rem;
+}
+
 .menu {
     font-size: 1rem;
+}
+
+
+.nav-item:hover {
+    border-radius: 0.5rem;
+    background-color: #F1F5F9;
+}
+
+.active {
+    background-color: #F1F5F9;
+    border-radius: 0.5rem;
 }

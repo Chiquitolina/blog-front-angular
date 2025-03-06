@@ -3,14 +3,18 @@
   <mat-spinner color="primary"></mat-spinner>
 </div>
 } @else {
-  <div class="mt-4">
-    <i>{{posts().length }} posts encontrados.</i>
-  </div>
-<div class="d-flex row">
+<div class="mt-4">
+  <i
+    >{{ posts().length }} posts encontrados para
+    <strong>{{ this.menuServ.selectedNavbarItem() }}</strong> ->
+    <strong>{{ this.menuServ.selectedMenuItem() }}</strong>
+  </i>
+</div>
+<div class="row d-flex">
   @for (post of posts(); track post) {
   <app-post-item
     [post]="post"
-    class="col-4 col-sm-6 col-xl-4 mt-4"
+    class="col-12 col-sm-6 col-xl-4 mt-4"
   ></app-post-item>
   }
 </div>

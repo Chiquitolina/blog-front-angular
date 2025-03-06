@@ -8,12 +8,17 @@ h2 {
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 1.50rem;
 }
 
 a {
   text-decoration: none;
   color: #6c757d;
+}
+
+* {
+  word-wrap: break-word; /* Rompe palabras largas */
+  overflow-wrap: break-word; /* Alternativa para navegadores modernos */
 }
 
 h3:hover {
@@ -25,10 +30,6 @@ h3:hover {
   font-size: 1rem;
 }
 
-.century {
-  font-family: "Century 751 W01 Roman";
-}
-
 .share {
   font-size: 1.25rem;
   margin-right: 0.75rem;
@@ -38,6 +39,10 @@ h3:hover {
   width: 1.25rem;
   margin: 0.25rem;
 }
+
+.century {
+  font-family: "Century 751 W01 Roman";
+} 
 
 .share-img-cont {
   background-color: #e5f7fd;
@@ -82,7 +87,7 @@ h3:hover {
 }
 
 .post-content {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 @keyframes slideInFromRight {

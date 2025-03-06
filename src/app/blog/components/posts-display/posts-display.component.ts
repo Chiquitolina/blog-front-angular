@@ -4,6 +4,7 @@ import { PostItemComponent } from '../post-item/post-item.component';
 import { PostsService } from '../../../shared/services/posts/posts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MenuService } from '../../../core/services/menu/menu.service';
 
 @Component({
   selector: 'app-posts-display',
@@ -14,8 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class PostsDisplayComponent {
   isLoading!: Signal<boolean>;
 
-  constructor(private postServ: PostsService) {
-
+  constructor(private postServ: PostsService, public menuServ: MenuService) {
     this.isLoading = this.postServ.getIsLoadingState();
 
     this.postServ.fetchPosts().subscribe({

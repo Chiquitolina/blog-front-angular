@@ -1,0 +1,22 @@
+<div class="w-100 d-flex justify-content-center">
+  <h2 class="century">Posts recientes</h2>
+</div>
+
+<p-carousel
+  [value]="recentPosts"
+  [numVisible]="3"
+  [numScroll]="3"
+  [circular]="false"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-recentPost #item>
+    <div class="bg-white border-secondary rounded m-2 p-4">
+      <img class="rounded w-100 mb-2" [attr.src]="recentPost.img" alt="" />
+      <strong class="century post-title mt-2">{{ recentPost.titulo }}</strong>
+      <div class="d-flex mt-2">
+        <mat-icon class="m-1">calendar_today</mat-icon>
+        <p class="mt-2">{{ recentPost.createdAt | date : "MMMM d, y" }}</p>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>

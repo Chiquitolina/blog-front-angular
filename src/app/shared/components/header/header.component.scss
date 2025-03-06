@@ -15,8 +15,26 @@ h1 {
     font-size: 2.25rem;
 }
 
+@media (max-width: 992px) {
+    .banner-img {
+        width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
+
+    .banner-img {
+        width: 100%;
+    }
+
     input {
         width: 20rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .banner-img {
+        height: 15rem;
     }
 }
