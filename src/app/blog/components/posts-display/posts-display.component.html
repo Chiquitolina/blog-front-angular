@@ -11,7 +11,7 @@
   </i>
 </div>
 <div class="row d-flex">
-  @for (post of posts(); track post) {
+  @for (post of posts(); track post.id) {
   <app-post-item
     [post]="post"
     class="col-12 col-sm-6 col-xl-4 mt-4"

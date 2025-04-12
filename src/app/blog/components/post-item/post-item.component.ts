@@ -5,6 +5,7 @@ import { CardModule } from 'primeng/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RatingModule } from 'primeng/rating';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importar FormsModule
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-post-item',
@@ -15,7 +16,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     MatIconModule,
     RatingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule
   ],
   templateUrl: './post-item.component.html',
   styleUrl: './post-item.component.scss',

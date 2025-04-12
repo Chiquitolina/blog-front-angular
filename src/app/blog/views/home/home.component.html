@@ -1,38 +1,40 @@
 <div class="row d-flex justify-content-md-center justify-content-center">
   <app-header></app-header>
 
-  <div
-    class="col-xl-6 col-md-12 d-flex justify-content-center align-items-center mt-3"
+  <p-carousel
+    [value]="mostRatedPostByCategory"
+    [numVisible]="3"
+    [numScroll]="3"
+    [circular]="false"
+    [responsiveOptions]="responsiveOptions"
   >
-    <img
-      class="h-100 home-img"
-      src="
-    https://www.insystechnologies.in/images/a8.png"
-      alt=""
-    />
-  </div>
-  <div class="col-xl-6 col-md-10 col-10 mt-3">
-    <p class="text-primary mb-3">Angular</p>
-    <b class="century title"
-      >Lorem, ipsum dolor sit amet consectetur adipisicing elit.</b
-    >
-    <p class="text-secondary post-description mt-3">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem sit optio
-      saepe omnis dolores aliquid molestias dignissimos laudantium nobis, unde
-      ea inventore rem ab, ipsam deleniti perspiciatis labore vitae officiis!
-    </p>
-    <div class="d-flex mt-3">
-      <p-avatar
-        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-        class="mr-2"
-        size="xlarge"
-        shape="circle"
-      />
-      <div class="d-flex flex-column home-post-info">
-        <b>Lorem ipsum dolor.</b>
-        <p class="text-secondary">Lorem ipsum</p>
+    <ng-template let-mostRatedPost #item>
+      <div class="row" >
+        <div
+          class="col-12 col-xl-6 col-md-12 d-flex justify-content-center align-items-center mt-3"
+        >
+          <img class="h-100 home-img" [src]="mostRatedPost.img" alt="" />
+        </div>
+        <div class="col-xl-6 col-md-10 col-10 mt-3">
+          <p class="text-primary mb-3">{{ mostRatedPost.categoria }}</p>
+          <b class="century title">{{ mostRatedPost.titulo }}</b>
+          <p class="text-secondary post-description mt-3">
+            {{ mostRatedPost.descripcion }}
+          </p>
+          <p-rating
+            [readonly]="true"
+            [(ngModel)]="mostRatedPost.avgRating"
+            name="avgRating"
+            pTooltip="{{
+              mostRatedPost.avgRating
+                ? 'Average Rating: ' + (+mostRatedPost.avgRating).toFixed(2)
+                : 'Sin calificación'
+            }}"
+            tooltipPosition="bottom"
+          />
+        </div>
       </div>
-    </div>
-  </div>
+    </ng-template>
+  </p-carousel>
 </div>
-<app-posts-display></app-posts-display>
+<app-posts-display id="seccion"></app-posts-display>

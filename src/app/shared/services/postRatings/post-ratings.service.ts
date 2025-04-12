@@ -29,4 +29,10 @@ export class PostRatingsService {
       .post(`${this.apiUrl}/postrating.create`, data)
       .pipe(finalize(() => this.isCreatingPostLoader.set({ status: 'finished', message: 'Post calificado correctamente.' })));
   }
+
+  getMostRatedPostByCategory(): Observable<any> {
+    return this.http.get(
+      `${this.apiUrl}/postrating.getMostRatedPostByCategory`
+    );
+  }
 }

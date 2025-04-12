@@ -1,0 +1,103 @@
+<form
+  class="row d-flex align-items-center"
+  [formGroup]="postForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="col-xl-4 col-md-4 d-flex flex-column">
+    <div class="d-flex flex-column flex-wrap w-100">
+      <div class="mb-2 w-100">
+        <p-floatlabel variant="on">
+          <input
+            pInputText
+            id="on_label"
+            formControlName="titulo"
+            autocomplete="off"
+            required
+            class="w-75"
+          />
+          <label for="on_label">Titulo</label>
+        </p-floatlabel>
+      </div>
+
+      <div class="mb-2">
+        <p-floatlabel variant="on">
+          <input
+            pInputText
+            id="on_label"
+            formControlName="categoria"
+            autocomplete="off"
+            required
+            class="w-75"
+          />
+          <label for="on_label">Categoría</label>
+        </p-floatlabel>
+      </div>
+
+      <div class="mb-2">
+        <p-floatlabel variant="on">
+          <input
+            pInputText
+            id="on_label"
+            formControlName="subcategoria"
+            autocomplete="off"
+            required
+            class="w-75"
+          />
+          <label for="on_label">Subcategoría</label>
+        </p-floatlabel>
+      </div>
+    </div>
+
+    <p-floatlabel class="mb-2 w-100" variant="on">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="lenguaje"
+          autocomplete="off"
+          required
+          class="w-75"
+        />
+        <label for="on_label">Lenguaje</label>
+      </p-floatlabel>
+    </p-floatlabel>
+
+    <p-floatlabel class="mb-2 w-100" variant="on">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="img"
+          autocomplete="off"
+          required
+          class="w-75"
+        />
+        <label for="on_label">Imagen</label>
+      </p-floatlabel>
+    </p-floatlabel>
+
+    <p-floatlabel variant="on">
+      <textarea
+        pTextarea
+        id="over_label"
+        formControlName="descripcion"
+        rows="5"
+        style="resize: none"
+        class="h-full w-75"
+        required
+      ></textarea>
+      <label for="on_label">Descripción</label>
+    </p-floatlabel>
+  </div>
+  <div class="carr border-0 col-xl-8 col-md-8 mt-2">
+    <p-editor
+      required
+      formControlName="contenido"
+      [style]="{ height: '320px' }"
+    />
+  </div>
+  <div class="d-flex justify-content-between">
+    <p-button class="mt-3" type="submit" label="Publicar" />
+    <p-button class="mt-3" type="submit" label="Ver preview" />
+  </div>
+</form>

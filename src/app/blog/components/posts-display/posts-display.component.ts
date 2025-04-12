@@ -5,7 +5,6 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MenuService } from '../../../core/services/menu/menu.service';
-
 @Component({
   selector: 'app-posts-display',
   imports: [CarouselModule, PostItemComponent, MatProgressSpinnerModule],
@@ -24,7 +23,6 @@ export class PostsDisplayComponent {
       },
       error: (error: HttpErrorResponse) => {},
       complete: () => {
-        console.log(this.postServ.getPosts()());
       },
     });
   }

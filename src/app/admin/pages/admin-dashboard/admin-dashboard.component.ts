@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-
+import { WritePostComponent } from '../../components/write-post/write-post.component';
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [],
+  imports: [WritePostComponent],
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.scss'
 })

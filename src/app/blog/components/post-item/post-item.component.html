@@ -6,12 +6,17 @@
       <img class="w-100" src="{{ post.img }}" alt="" />
     </a>
     <div class="w-75">
-      <p class="mt-3 text-primary">{{ post.categoria }}</p>
+      <div class="d-flex flex-sm-column flex-wrap justify-content-between">
+        <span class="mt-3 text-primary">{{ post.categoria }}</span>
+        <span class="mt-3 text-secondary">{{ post.subcategoria }}</span>
+      </div>
       <strong class="century post-title">{{ post.titulo }}</strong>
       <div class="d-flex mt-2">
         <div class="d-flex align-items-center post-info">
           <mat-icon class="m-1">calendar_today</mat-icon>
-          <span class="mt-1">{{ post.createdAt | date : "MMMM d, y" }}</span>
+          <i class="mt-1" style="font-size: 14px">{{
+            post.createdAt | date : "MMMM d, y"
+          }}</i>
         </div>
         <!-- <div class="d-flex align-items-center post-info">
           <mat-icon>update</mat-icon>
@@ -22,7 +27,17 @@
     </div>
 
     <form>
-      <p-rating [readonly]="true" [(ngModel)]="post.avgRating" name="avgRating" />
+      <p-rating
+        [readonly]="true"
+        [(ngModel)]="post.avgRating"
+        name="avgRating"
+        pTooltip="{{
+          post.avgRating
+            ? 'Average Rating: ' + (+post.avgRating).toFixed(2)
+            : 'Sin calificación'
+        }}"
+        tooltipPosition="bottom"
+      />
     </form>
   </div>
 </div>

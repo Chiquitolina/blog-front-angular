@@ -19,7 +19,8 @@ import { Collapse } from 'bootstrap';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements AfterViewInit {
-  @ViewChild('navbarSupportedContent', { static: false }) navbarCollapse!: ElementRef;
+  @ViewChild('navbarSupportedContent', { static: false })
+  navbarCollapse!: ElementRef;
   bsCollapse!: Collapse | null;
 
   items: MenuItem[] | undefined;
@@ -40,7 +41,6 @@ export class NavbarComponent implements AfterViewInit {
       });
     }
   }
-  
 
   filterByItemSelected(item: NavbarItems) {
     this.postServ.getPostByCategory(item).subscribe({
@@ -60,6 +60,11 @@ export class NavbarComponent implements AfterViewInit {
       this.filterByItemSelected(
         item ? (item as NavbarItems) : NavbarItems.Angular
       );
+
+    setTimeout(() => {
+      const element = document.getElementById('seccion'); // O el id de tu sección
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
   }
 
   isSelected(item: NavbarItems): boolean {
@@ -77,5 +82,4 @@ export class NavbarComponent implements AfterViewInit {
       this.bsCollapse.hide();
     }
   }
-  
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { PostsService } from '../../../shared/services/posts/posts.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,7 +19,8 @@ import { PostRatingsService } from '../../../shared/services/postRatings/post-ra
 import { LinkedinAuthService } from '../../../core/services/linkedin-auth/linkedin-auth.service';
 import { RecentPostCarouselComponent } from '../../components/recent-post-carousel/recent-post-carousel.component';
 import { CategoryService } from '../../../shared/services/categories/category.service';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HtmlUnescapePipe } from '../../../html-unescape.pipe';
 @Component({
   selector: 'app-single-post',
   imports: [
@@ -33,11 +34,15 @@ import { CategoryService } from '../../../shared/services/categories/category.se
     ReactiveFormsModule,
     FormsModule,
     RecentPostCarouselComponent,
+    MatProgressSpinnerModule,
+    HtmlUnescapePipe,
   ],
   templateUrl: './single-post.component.html',
   styleUrl: './single-post.component.scss',
 })
 export class SinglePostComponent {
+  isLoadingSinglePost!: Signal<boolean>;
+
   formGroup!: FormGroup;
 
   post: any;
@@ -54,6 +59,7 @@ export class SinglePostComponent {
     private linkedinAuth: LinkedinAuthService,
     private categoryServ: CategoryService
   ) {
+    this.isLoadingSinglePost = this.postServ.getIsLoadingState();
     // Suscribirse a los cambios en la URL para actualizar el post dinámicamente
     this.route.paramMap
       .pipe(
@@ -106,12 +112,13 @@ export class SinglePostComponent {
 
     this.categoryServ.getMostRanked().subscribe({
       next: (data: any) => {
-        console.log(data)
-        this.mostRankedCategories = data.result.data || []},
+        console.log(data);
+        this.mostRankedCategories = data.result.data || [];
+      },
       error: (error: Error) => {
         console.error('Error al obtener el ranking de categorías.', error);
-      }
-    })
+      },
+    });
   }
 
   openDialog() {
@@ -133,6 +140,7 @@ export class SinglePostComponent {
     this.postRatingServ.getRatingById(this.post.id).subscribe({
       next: (data: any) => {
         this.postRatingData = data?.result?.data;
+        console.log('POST RATING DATA:', this.postRatingData);
         this.formGroup
           .get('rating')
           ?.setValue(this.postRatingData.averageRating);
@@ -151,11 +159,11 @@ export class SinglePostComponent {
   fetchMostRankedCategories() {
     this.categoryServ.getMostRanked().subscribe({
       next: (data: any) => {
-        this.mostRankedCategories = data.result.data
+        this.mostRankedCategories = data.result.data;
       },
       error: (error: Error) => {
         console.error('Error al obtener el ranking de categorías.', error);
-      }
-    })
+      },
+    });
   }
 }

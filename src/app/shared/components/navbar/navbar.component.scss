@@ -5,6 +5,20 @@
 
 .navbar-banner {
     cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        visibility: visible;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 nav {
@@ -29,6 +43,7 @@ nav {
     background-color: #F1F5F9;
     border-radius: 0.5rem;
 }
+
 
 
 

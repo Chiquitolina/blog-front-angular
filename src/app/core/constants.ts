@@ -11,6 +11,7 @@
         Forms = 'Formularios',
         RxJS = 'RxJS',
         Optimización = 'Optimización y Performance',
+        NetworkMiddleware = 'Network y Middleware',
         DeepInsights = 'Deep Insights',
         Subcategoria = 'Subcategoria'
     }

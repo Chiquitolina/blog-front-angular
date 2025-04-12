@@ -11,7 +11,9 @@ export class PostsService {
   private posts = signal<any[]>([]);
   private isLoadingPosts = signal<boolean>(false);
 
-  private singlePost = signal<any>({})
+  private isLoadingSinglePost = signal<boolean>(false);
+
+  private singlePost = signal<any>({});
 
   private categoryControl = signal<string>('Angular');
   private subcategoryControl = signal<string | null>(null);
@@ -32,6 +34,10 @@ export class PostsService {
     return this.isLoadingPosts; // Devuelve la Signal
   }
 
+  getIsLoadingSinglePostState() {
+    return this.isLoadingPosts;
+  }
+
   fetchPosts(): Observable<any> {
     this.isLoadingPosts.set(true);
     return this.http
@@ -44,11 +50,14 @@ export class PostsService {
   }
 
   createPost(post: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/post.create`, { input: post });
+    return this.http.post(`${this.apiUrl}/post.create`, post );
   }
 
   getPostById(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/post.getById?input=${id}`);
+    this.isLoadingSinglePost.set(true);
+    return this.http
+      .get(`${this.apiUrl}/post.getById?input=${id}`)
+      .pipe(finalize(() => this.isLoadingSinglePost.set(false)));
   }
 
   getPostByCategory(category: string, subcategory?: string): Observable<any> {

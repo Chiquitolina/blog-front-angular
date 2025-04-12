@@ -1,4 +1,10 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  signal,
+} from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { MenuService } from '../../../core/services/menu/menu.service';
@@ -18,16 +24,17 @@ export class MenuComponent implements AfterViewInit {
   @ViewChild('navbarCollapse', { static: false }) navbarCollapse!: ElementRef;
   bsCollapse!: Collapse | null;
 
-  subcategories: MenuItem[] | undefined;
+  subcategories = signal<MenuItem[]>([]); // Usamos Signal en lugar de un array normal
   activeItem: string | undefined;
 
   constructor(public menuServ: MenuService, public postServ: PostsService) {
     effect(() => {
       const selectedCategory = this.menuServ.selectedNavbarItem();
-      this.subcategories =
+      this.subcategories.set(
         SubcategoriesMap[selectedCategory]?.map((subcategory) => ({
           label: subcategory,
-        })) ?? [];
+        })) ?? []
+      );
     });
   }
 
@@ -45,7 +52,7 @@ export class MenuComponent implements AfterViewInit {
         console.log(data);
         this.postServ.setPosts(data.result.data);
         this.activeItem = subcategory;
-        this.menuServ.updateSelectedMenuItem(subcategory)
+        this.menuServ.updateSelectedMenuItem(subcategory);
       },
       error: (error: Error) => {
         console.log(error);

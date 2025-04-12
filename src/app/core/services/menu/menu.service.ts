@@ -4,6 +4,7 @@ import {
   EstructurasyAlgoritmosSubcategories,
   NavbarItems,
   PatronesDeDiseñoSubcategories,
+  SubcategoriesMap,
 } from '../../constants';
 
 @Injectable({
@@ -23,12 +24,18 @@ export class MenuService {
   updateSelectedNavbarItem(item: any) {
     this.selectedNavbarItem.set(item);
     console.log(this.selectedNavbarItem);
+
+    const firstSubcategory = SubcategoriesMap[item as NavbarItems]?.[0] as
+      | AngularSubcategories
+      | EstructurasyAlgoritmosSubcategories
+      | PatronesDeDiseñoSubcategories
+      | null;
+
+    this.selectedMenuItem.set(firstSubcategory);
   }
 
   updateSelectedMenuItem(item: any) {
     this.selectedMenuItem.set(item);
     console.log(this.selectedMenuItem());
   }
-
-
 }
