@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { finalize, Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsService {
-  private readonly apiUrl = 'http://localhost:3000/trpc';
+  private readonly apiUrl = environment.apiUrl;
 
   private posts = signal<any[]>([]);
   private isLoadingPosts = signal<boolean>(false);
