@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir -p src/environments
           echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}' };" > src/environments/environment.prod.ts
-          echo "export const environment = { production: false, apiUrl: '${{ secrets.API_URL_DEV }}' };" > src/environments/environment.ts
+          echo "export const environment = { production: false, apiUrl: '${{ secrets.API_URL }}' };" > src/environments/environment.ts
 
       - name: Build Angular app
         run: npm run build --prod
