@@ -15,6 +15,7 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 import { DialogModule } from 'primeng/dialog';
 
 @Component({
+  standalone: true,
   selector: 'app-write-post',
   imports: [
     EditorModule,

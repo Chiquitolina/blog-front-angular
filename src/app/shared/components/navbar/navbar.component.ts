@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { PostsService } from '../../services/posts/posts.service';
 import { Collapse } from 'bootstrap';
 @Component({
+  standalone: true,
   selector: 'app-navbar',
   imports: [MenubarModule, RouterModule],
   templateUrl: './navbar.component.html',

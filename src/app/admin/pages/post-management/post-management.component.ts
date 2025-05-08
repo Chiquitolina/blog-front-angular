@@ -8,6 +8,7 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
+  standalone: true,
   selector: 'app-post-management',
   imports: [TableModule, TagModule, RatingModule, CommonModule, ButtonModule],
   templateUrl: './post-management.component.html',

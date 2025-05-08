@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MenuService } from '../../../core/services/menu/menu.service';
 @Component({
+  standalone: true,
   selector: 'app-posts-display',
   imports: [CarouselModule, PostItemComponent, MatProgressSpinnerModule],
   templateUrl: './posts-display.component.html',

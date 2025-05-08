@@ -4,6 +4,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
+  standalone: true,
   selector: 'app-recent-post-carousel',
   imports: [CarouselModule, CommonModule, MatIconModule],
   templateUrl: './recent-post-carousel.component.html',

@@ -4,6 +4,7 @@ import { LinkedinAuthService } from '../../core/services/linkedin-auth/linkedin-
 import { switchMap } from 'rxjs';
 
 @Component({
+  standalone: true,
   selector: 'app-linkedin-callback',
   imports: [],
   templateUrl: './linkedin-callback.component.html',

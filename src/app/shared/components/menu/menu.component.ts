@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { Collapse } from 'bootstrap';
 
 @Component({
+  standalone: true,
   selector: 'app-menu',
   imports: [MenubarModule, RouterModule],
   templateUrl: './menu.component.html',

@@ -5,6 +5,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ScrollUpService } from './shared/services/scroll-up/scroll-up.service';
 import { filter } from 'rxjs';
 @Component({
+  standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet, FooterComponent, NavbarComponent],
   templateUrl: './app.component.html',

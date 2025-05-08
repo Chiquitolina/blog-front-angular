@@ -8,6 +8,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
+  standalone: true,
   selector: 'app-post-item',
   imports: [
     DatePipe,

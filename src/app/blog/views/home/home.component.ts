@@ -11,6 +11,7 @@ import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
 @Component({
+  standalone: true,
   selector: 'app-home',
   imports: [
     AvatarModule,

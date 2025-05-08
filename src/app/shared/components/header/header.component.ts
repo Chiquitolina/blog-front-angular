@@ -5,6 +5,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { MenuComponent } from '../menu/menu.component';
 
 @Component({
+  standalone: true,
   selector: 'app-header',
   imports: [InputTextModule, IconFieldModule, InputIconModule, MenuComponent],
   templateUrl: './header.component.html',

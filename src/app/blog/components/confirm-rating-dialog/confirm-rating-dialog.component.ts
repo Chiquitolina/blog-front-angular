@@ -16,6 +16,7 @@ import { AnimationItem } from 'lottie-web';
 import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
+  standalone: true,
   selector: 'app-confirm-rating-dialog',
   imports: [
     DialogModule,
