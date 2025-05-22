@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { MatIconModule } from '@angular/material/icon';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-recent-post-carousel',
-  imports: [CarouselModule, CommonModule, MatIconModule],
+  imports: [CarouselModule, CommonModule, MatIconModule, RatingModule, FormsModule],
   templateUrl: './recent-post-carousel.component.html',
   styleUrl: './recent-post-carousel.component.scss',
 })
