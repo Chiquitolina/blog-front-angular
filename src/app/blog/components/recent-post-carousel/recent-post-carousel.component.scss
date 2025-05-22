@@ -3,6 +3,10 @@ h2 {
   font-weight: 600;
 }
 
+img {
+  height: 12rem;
+}
+
 div {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -14,4 +18,16 @@ div {
 
 .post-title {
   font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+  img {
+    height: 20rem;
+  }
+}
+
+@media (max-width: 576px) {
+  img {
+    height: 13rem;
+  }
 }

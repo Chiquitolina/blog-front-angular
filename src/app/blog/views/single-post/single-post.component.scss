@@ -8,7 +8,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
 }
 
 a {
@@ -17,8 +17,10 @@ a {
 }
 
 * {
-  word-wrap: break-word; /* Rompe palabras largas */
-  overflow-wrap: break-word; /* Alternativa para navegadores modernos */
+  word-wrap: break-word;
+  /* Rompe palabras largas */
+  overflow-wrap: break-word;
+  /* Alternativa para navegadores modernos */
 }
 
 h3:hover {
@@ -42,7 +44,8 @@ h3:hover {
 
 .century {
   font-family: "Century 751 W01 Roman";
-} 
+  color: black;
+}
 
 .share-img-cont {
   background-color: #e5f7fd;
@@ -57,11 +60,11 @@ h3:hover {
 
 .post-img {
   border-radius: 0 5rem 0 5rem;
-  height: 27%;
+  height: 25rem;
 }
 
 .side {
-  animation: slideInFromLeft 2s ease-out;
+  animation: slideInFromLeft 1.5s ease-out;
 }
 
 .left-titles {
@@ -91,11 +94,25 @@ h3:hover {
   font-size: 1rem;
 }
 
+.category {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(13, 110, 253, 0.1);
+  font-size: 12px;
+}
+
+.sidepost {
+  animation: slideInFromLeft 0.9s ease-out forwards;
+}
+
 @keyframes slideInFromRight {
   0% {
     transform: translateX(100%);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -107,8 +124,15 @@ h3:hover {
     transform: translateX(-100%);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-img {
+    height: 15rem;
   }
 }

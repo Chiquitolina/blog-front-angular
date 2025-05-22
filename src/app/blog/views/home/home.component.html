@@ -9,19 +9,35 @@
     [responsiveOptions]="responsiveOptions"
   >
     <ng-template let-mostRatedPost #item>
-      <div class="row" >
+      <div class="row">
         <div
-          class="col-12 col-xl-6 col-md-12 d-flex justify-content-center align-items-center mt-3"
+          class="col-12 col-xl-6 col-md-12 d-flex justify-content-center align-items-center"
         >
-          <img class="h-100 home-img" [src]="mostRatedPost.img" alt="" />
+          <a
+            class="d-flex justify-content-center"
+            href=""
+            [routerLink]="['/post', mostRatedPost.id]"
+          >
+            <img class="h-100 home-img" [src]="mostRatedPost.img" alt="" />
+          </a>
         </div>
-        <div class="col-xl-6 col-md-10 col-10 mt-3">
-          <p class="text-primary mb-3">{{ mostRatedPost.categoria }}</p>
+        <div class="col-xl-5 col-md-12 col-12">
+          <div
+            class="d-flex justify-content-between mb-4 mt-xl-0 mt-md-4 mt-sm-4 mt-4"
+          >
+            <span class="text-primary category">{{
+              mostRatedPost.categoria
+            }}</span>
+            <span class="text-secondary subcategory">{{
+              mostRatedPost.subcategoria
+            }}</span>
+          </div>
           <b class="century title">{{ mostRatedPost.titulo }}</b>
           <p class="text-secondary post-description mt-3">
             {{ mostRatedPost.descripcion }}
           </p>
           <p-rating
+            class="w-25"
             [readonly]="true"
             [(ngModel)]="mostRatedPost.avgRating"
             name="avgRating"
@@ -30,7 +46,7 @@
                 ? 'Average Rating: ' + (+mostRatedPost.avgRating).toFixed(2)
                 : 'Sin calificación'
             }}"
-            tooltipPosition="bottom"
+            tooltipPosition="right"
           />
         </div>
       </div>

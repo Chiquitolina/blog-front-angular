@@ -4,12 +4,13 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { CommonModule } from '@angular/common';
 import { PostsDisplayComponent } from '../../components/posts-display/posts-display.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { PostRatingsService } from '../../../shared/services/postRatings/post-ratings.service';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
+
 @Component({
   standalone: true,
   selector: 'app-home',
@@ -22,7 +23,8 @@ import { TooltipModule } from 'primeng/tooltip';
     CarouselModule,
     RatingModule,
     FormsModule,
-    TooltipModule
+    TooltipModule,
+    RouterModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

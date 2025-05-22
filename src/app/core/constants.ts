@@ -10,10 +10,9 @@
         Directives = 'Directivas',
         Forms = 'Formularios',
         RxJS = 'RxJS',
-        Optimización = 'Optimización y Performance',
+        Optimización = 'Optimización y Rendimiento',
         NetworkMiddleware = 'Network y Middleware',
         DeepInsights = 'Deep Insights',
-        Subcategoria = 'Subcategoria'
     }
     
     export enum EstructurasyAlgoritmosSubcategories {

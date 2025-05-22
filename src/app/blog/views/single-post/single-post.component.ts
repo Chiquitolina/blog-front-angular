@@ -22,6 +22,7 @@ import { CategoryService } from '../../../shared/services/categories/category.se
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HtmlUnescapePipe } from '../../../html-unescape.pipe';
 @Component({
+  standalone: true,
   selector: 'app-single-post',
   imports: [
     MatIconModule,
@@ -35,7 +36,6 @@ import { HtmlUnescapePipe } from '../../../html-unescape.pipe';
     FormsModule,
     RecentPostCarouselComponent,
     MatProgressSpinnerModule,
-    HtmlUnescapePipe,
   ],
   templateUrl: './single-post.component.html',
   styleUrl: './single-post.component.scss',

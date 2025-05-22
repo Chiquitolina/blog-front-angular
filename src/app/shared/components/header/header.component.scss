@@ -1,6 +1,6 @@
 .banner-img {
     border-radius: 2rem;
-    width: 70%;
+    width: 62.5%;
     height: 22rem;
 }
 
@@ -30,11 +30,19 @@ h1 {
     input {
         width: 20rem;
     }
+
+    .menu {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
 
     .banner-img {
-        height: 15rem;
+        height: 12.5rem;
+    }
+
+    .menu {
+        width: 100%;
     }
 }

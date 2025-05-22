@@ -17,7 +17,7 @@ export class MenuService {
     | EstructurasyAlgoritmosSubcategories
     | PatronesDeDiseñoSubcategories
     | null
-  >(AngularSubcategories.Subcategoria);
+  >(null);
 
   constructor() {}
 

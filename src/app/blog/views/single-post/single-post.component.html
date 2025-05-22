@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row d-flex justify-content-between g-0">
+  <div class="row d-flex justify-content-around g-0">
     <!-- Columna de post principal (debe estar primero en móviles) -->
     <div
-      class="col-xl-8 order-1 order-md-2 col-md-12 bg-white d-flex flex-column align-items-center post-side"
+      class="col-xl-6 order-1 order-md-2 col-md-8 bg-white d-flex h-25 flex-column align-items-center post-side"
     >
       @if (isLoadingSinglePost()) {
       <mat-spinner color="primary"></mat-spinner>
@@ -11,22 +11,22 @@
       <div class="info">
         <b class="century mt-3 post-title">{{ post?.titulo }}</b>
         <div class="w-100 d-flex justify-content-between">
-          <div class="d-flex align-items-center mt-2">
+          <div class="d-flex align-items-center">
             <mat-icon class="m-1">calendar_today</mat-icon>
-            <span class="mt-1 date">{{
+            <i class="mt-1" style="font-size: 14px">{{
               post?.createdAt | date : "MMMM d, y"
-            }}</span>
+            }}</i>
           </div>
           <form class="mt-3" [formGroup]="formGroup">
             <p-rating (click)="openDialog()" formControlName="rating" />
             <p class="mt-2 av-rat">
               Average Rating:
-              {{ this.postRatingData?.avgRating }}
+              {{ this.post?.avgRating }}
             </p>
           </form>
         </div>
-        <div class="mt-4 mb-5 post-content" [innerHTML]="post?.contenido | htmlUnescape"></div>
-        <div class="d-flex align-items-center p-2">
+        <div class="mt-4 mb-3 post-content" [innerHTML]="post?.contenido"></div>
+        <!-- <div class="d-flex align-items-center p-2">
           <b class="century share">Compartí este post</b>
           <div class="share-img-cont">
             <img
@@ -39,35 +39,58 @@
           <div class="share-img-cont">
             <img class="share-img" src="/assets/twitter-logo.png" alt="" />
           </div>
-        </div>
+        </div> -->
       </div>
       }
     </div>
 
     <!-- Columna de post recientes -->
     <div
-      class="col-xl-3 col-md-12 side order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none"
+      class="col-xl-4 col-md-12 order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none"
     >
-      <h2 class="century mb-5">Posts recientes</h2>
-      @for (recentPost of recentPosts; track recentPost) {
-      <div class="mt-5 text-secondary">
-        <a href="" [routerLink]="['/post', recentPost.id]">
-          <h3 class="century">{{ recentPost.titulo }}</h3>
-        </a>
-        <div class="d-flex align-items-center">
-          <mat-icon class="m-1">calendar_today</mat-icon>
-          <i class="mt-1" style="font-size: 14px">{{
-            recentPost.createdAt | date : "MMMM d, y"
-          }}</i>
+      <h2 class="century mb-5 side">Posts recientes</h2>
+      @for (recentPost of recentPosts; let i = $index; track recentPost) {
+      <div
+        class="d-flex align-items-center justify-content-between row sidepost bg-white rounded"
+        [ngStyle]="{ 'animation-delay': i * 0.2 + 's' }"
+      >
+        <div class="d-flex justify-content-end mb-2">
+          <span class="mt-2 text-primary category d-flex">{{
+            recentPost.categoria
+          }}</span>
         </div>
-        <form class="mt-3">
-          <p-rating
-            [readonly]="true"
-            [(ngModel)]="recentPost.avgRating"
-            name="avgRating"
+        <div class="col-3">
+          <img
+            class="rounded"
+            style="width: 10rem; height: 9rem"
+            src="{{ recentPost.img }}"
+            alt=""
           />
-        </form>
+        </div>
+        <div class="col-7">
+          <a href="" [routerLink]="['/post', recentPost.id]">
+            <h3 class="century">{{ recentPost.titulo }}</h3>
+          </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-center mt-3">
+            <mat-icon style="font-size: 1rem" class="mt-1"
+              >calendar_today</mat-icon
+            >
+            <i style="font-size: 12px">{{
+              recentPost.createdAt | date : "MMMM d, y"
+            }}</i>
+          </div>
+          <form>
+            <p-rating
+              [readonly]="true"
+              [(ngModel)]="recentPost.avgRating"
+              name="avgRating"
+            />
+          </form>
+        </div>
       </div>
+      <hr />
       }
       <h2 class="mt-5 century">Categorías Top</h2>
       @for (category of mostRankedCategories; track category) {
@@ -80,7 +103,7 @@
       }
     </div>
     <app-recent-post-carousel
-      class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-1 mt-5"
+      class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-2 mt-5 col-md-8"
       [recentPosts]="recentPosts"
     ></app-recent-post-carousel>
   </div>
