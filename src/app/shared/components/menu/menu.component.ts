@@ -30,13 +30,19 @@ export class MenuComponent implements AfterViewInit {
 
   constructor(public menuServ: MenuService, public postServ: PostsService) {
     effect(() => {
-      const selectedCategory = this.menuServ.selectedNavbarItem();
-      this.subcategories.set(
-        SubcategoriesMap[selectedCategory]?.map((subcategory) => ({
-          label: subcategory,
-        })) ?? []
-      );
-    });
+    const selectedCategory = this.menuServ.selectedNavbarItem();
+    const subcategories = SubcategoriesMap[selectedCategory] ?? [];
+
+    // Actualiza el signal subcategories
+    this.subcategories.set(subcategories.map((subcategory) => ({
+      label: subcategory,
+    })));
+
+    // Si hay al menos una subcategoría, aplicamos el filtro con la primera
+    if (subcategories.length > 0) {
+      this.filterByItemSelected(selectedCategory, subcategories[0]);
+    }
+  });
   }
 
   ngAfterViewInit() {

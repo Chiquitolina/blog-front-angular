@@ -7,7 +7,13 @@ import {
 } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
-import { NavbarItems } from '../../../core/constants';
+import {
+  AngularSubcategories,
+  EstructurasyAlgoritmosSubcategories,
+  NavbarItems,
+  PatronesDeDiseñoSubcategories,
+  SubcategoriesMap,
+} from '../../../core/constants';
 import { MenuService } from '../../../core/services/menu/menu.service';
 import { RouterModule } from '@angular/router';
 import { PostsService } from '../../services/posts/posts.service';
@@ -44,15 +50,23 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   filterByItemSelected(item: NavbarItems) {
-    this.postServ.getPostByCategory(item).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.postServ.setPosts(data.result.data);
-      },
-      error: (error: Error) => {
-        console.log(error);
-      },
-    });
+    const firstSubcategory = SubcategoriesMap[item as NavbarItems]?.[0] as
+      | AngularSubcategories
+      | EstructurasyAlgoritmosSubcategories
+      | PatronesDeDiseñoSubcategories
+      | null;
+
+    this.postServ
+      .getPostByCategory(item, firstSubcategory as string)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.postServ.setPosts(data.result.data);
+        },
+        error: (error: Error) => {
+          console.log(error);
+        },
+      });
   }
 
   onClickMenuItem(item: string | undefined) {

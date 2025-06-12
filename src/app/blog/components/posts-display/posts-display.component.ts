@@ -18,14 +18,14 @@ export class PostsDisplayComponent {
   constructor(private postServ: PostsService, public menuServ: MenuService) {
     this.isLoading = this.postServ.getIsLoadingState();
 
-    this.postServ.fetchPosts().subscribe({
+  /*  this.postServ.fetchPosts().subscribe({
       next: (data) => {
         this.postServ.setPosts(data.result.data);
       },
       error: (error: HttpErrorResponse) => {},
       complete: () => {
       },
-    });
+    });*/
   }
 
   get posts() {
