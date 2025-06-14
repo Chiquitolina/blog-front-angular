@@ -17,11 +17,11 @@
           <p class="text-secondary post-description mt-3">
             {{ mostRatedPost.descripcion }}
           </p>
-          <p-rating [readonly]="true" [(ngModel)]="mostRatedPost.avgRating" name="avgRating" pTooltip="{{
+          <p-rating class="w-25" [readonly]="true" [(ngModel)]="mostRatedPost.avgRating" name="avgRating" pTooltip="{{
               mostRatedPost.avgRating
                 ? 'Average Rating: ' + (+mostRatedPost.avgRating).toFixed(2)
                 : 'Sin calificación'
-            }}" tooltipPosition="bottom" />
+            }}" tooltipPosition="right" />
         </div>
       </div>
     </ng-template>
