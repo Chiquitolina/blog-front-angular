@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row d-flex justify-content-around g-0">
     <!-- Columna de post principal (debe estar primero en móviles) -->
-    <div class="col-xl-6 order-1 order-md-2 col-md-8 bg-white d-flex h-25 flex-column align-items-center post-side">
+    <div
+      class="col-xl-6 order-1 order-md-2 col-md-8 bg-white d-flex h-25 flex-column align-items-center post-side"
+    >
       @if (isLoadingSinglePost()) {
       <mat-spinner color="primary"></mat-spinner>
       } @else {
@@ -13,7 +15,7 @@
             <mat-icon class="m-1">calendar_today</mat-icon>
             <i class="mt-1" style="font-size: 14px">{{
               post?.createdAt | date : "MMMM d, y"
-              }}</i>
+            }}</i>
           </div>
           <form class="mt-3" [formGroup]="formGroup">
             <p-rating (click)="openDialog()" formControlName="rating" />
@@ -43,16 +45,27 @@
     </div>
 
     <!-- Columna de post recientes -->
-    <div class="col-xl-4 col-md-12 side order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none">
-      <h2 class="century mb-5">Posts recientes</h2>
-      @for (recentPost of recentPosts; track recentPost) {
-      <div class="d-flex align-items-center justify-content-between row">
+    <div
+      class="col-xl-4 col-md-12 order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none"
+    >
+      <h2 class="century mb-5 side">Posts recientes</h2>
+      @for (recentPost of recentPosts; let i = $index; track recentPost) {
+      <div
+        class="d-flex align-items-center justify-content-between row sidepost bg-white rounded"
+        [ngStyle]="{ 'animation-delay': i * 0.2 + 's' }"
+      >
         <div class="d-flex justify-content-end mb-2">
-          <span class="mt-2 text-primary category d-flex">{{ recentPost.categoria
-            }}</span>
+          <span class="mt-2 text-primary category d-flex">{{
+            recentPost.categoria
+          }}</span>
         </div>
         <div class="col-3">
-          <img class="rounded" style="width: 9rem; height: 9rem" src="{{ recentPost.img }}" alt="" />
+          <img
+            class="rounded"
+            style="width: 10rem; height: 9rem"
+            src="{{ recentPost.img }}"
+            alt=""
+          />
         </div>
         <div class="col-7">
           <a href="" [routerLink]="['/post', recentPost.id]">
@@ -60,16 +73,20 @@
           </a>
         </div>
         <div class="d-flex align-items-center justify-content-between">
-          <div class="d-flex align-items-center mt-2">
-            <!-- <mat-icon style="font-size: 1rem" class=""
-                >calendar_today</mat-icon
-              >-->
-            <i class="mt-1" style="font-size: 12px">{{
+          <div class="d-flex align-items-center justify-content-center mt-3">
+            <mat-icon style="font-size: 1rem" class="mt-1"
+              >calendar_today</mat-icon
+            >
+            <i style="font-size: 12px">{{
               recentPost.createdAt | date : "MMMM d, y"
-              }}</i>
+            }}</i>
           </div>
           <form>
-            <p-rating [readonly]="true" [(ngModel)]="recentPost.avgRating" name="avgRating" />
+            <p-rating
+              [readonly]="true"
+              [(ngModel)]="recentPost.avgRating"
+              name="avgRating"
+            />
           </form>
         </div>
       </div>
@@ -85,13 +102,19 @@
       </div>
       }
     </div>
-    <app-recent-post-carousel class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-2 mt-5 col-md-8"
-      [recentPosts]="recentPosts"></app-recent-post-carousel>
+    <app-recent-post-carousel
+      class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-2 mt-5 col-md-8"
+      [recentPosts]="recentPosts"
+    ></app-recent-post-carousel>
   </div>
 </div>
 <div>
   <app-posts-display></app-posts-display>
 </div>
-<app-confirm-rating-dialog (afterRated)="uploadRate()" [visible]="isDialogVisible"
-  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }" (visibleChange)="onDialogClosed()">
+<app-confirm-rating-dialog
+  (afterRated)="uploadRate()"
+  [visible]="isDialogVisible"
+  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }"
+  (visibleChange)="onDialogClosed()"
+>
 </app-confirm-rating-dialog>

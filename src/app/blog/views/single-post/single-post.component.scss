@@ -8,7 +8,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
 }
 
 a {
@@ -60,11 +60,11 @@ h3:hover {
 
 .post-img {
   border-radius: 0 5rem 0 5rem;
-  height: 24rem;
+  height: 25rem;
 }
 
 .side {
-  animation: slideInFromLeft 2s ease-out;
+  animation: slideInFromLeft 1.5s ease-out;
 }
 
 .left-titles {
@@ -103,6 +103,9 @@ h3:hover {
   font-size: 12px;
 }
 
+.sidepost {
+  animation: slideInFromLeft 0.9s ease-out forwards;
+}
 
 @keyframes slideInFromRight {
   0% {
