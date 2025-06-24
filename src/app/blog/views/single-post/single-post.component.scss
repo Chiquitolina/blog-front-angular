@@ -16,6 +16,24 @@ a {
   color: #6c757d;
 }
 
+form {
+  background-color: #c8e6d5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+.subcategory {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(108, 117, 125, 0.1);
+  font-size: 12px;
+}
+
+
 * {
   word-wrap: break-word;
   /* Rompe palabras largas */
