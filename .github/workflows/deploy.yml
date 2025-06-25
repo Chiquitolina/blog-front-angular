@@ -1,9 +1,7 @@
-name: Deploy Angular to DEV VPS
-
 on:
   push:
     branches:
-      - dev  # Usás master en lugar de main
+      - master # Usás master en lugar de main
 
 jobs:
   build-and-deploy:
@@ -16,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.19.0'
+          node-version: "18.19.0"
 
       - name: Install dependencies
         run: npm install
@@ -24,8 +22,8 @@ jobs:
       - name: Create environment files
         run: |
           mkdir -p src/environments
-          echo "export const environment = { production: true, apiUrl: '${{ secrets.DEV_API_URL }}' };" > src/environments/environment.prod.ts
-          echo "export const environment = { production: false, apiUrl: '${{ secrets.DEV_API_URL }}' };" > src/environments/environment.ts
+          echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}' };" > src/environments/environment.prod.ts
+          echo "export const environment = { production: false, apiUrl: '${{ secrets.API_URL }}' };" > src/environments/environment.ts
 
       - name: Build Angular app
         run: npm run build --prod
@@ -39,4 +37,4 @@ jobs:
       - name: Deploy to VPS via SSH
         run: |
           rsync -avz -e "ssh -i ~/.ssh/ci_deploy_key -o StrictHostKeyChecking=no -p5507" \
-          dist/devtacora/browser/ root@149.50.150.50:/var/www/devtacora-dev/dist/public/
+          dist/devtacora/browser/ root@149.50.150.50:/var/www/devtacora-back/dist/public/
