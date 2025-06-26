@@ -3,10 +3,12 @@
 * {
   font-family: "URW Geometric", sans-serif;
 }
+
 html,
 body {
   min-height: 100vh;
 }
+
 body {
   margin: 0;
 }
@@ -17,4 +19,22 @@ body {
   display: block;
 }
 
+.category,
+.subcategory,
+.avg-rat {
+  font-weight: 500;
+}
 
+.category {
+  border: 1px solid rgba(13, 110, 253, 0.1);
+  border-bottom: none;
+  border-left: none;
+  color: rgba(20, 111, 248, 0.562);
+}
+
+.subcategory {
+  border: 1px solid rgba(184, 177, 183, 0.288);
+  border-bottom: none;
+  border-left: none;
+  color: rgba(150, 144, 149, 0.795);
+}

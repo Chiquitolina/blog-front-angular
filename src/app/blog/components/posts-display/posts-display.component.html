@@ -4,18 +4,14 @@
 </div>
 } @else {
 <div class="mt-4">
-  <i
-    >{{ posts().length }} posts encontrados para
+  <i>{{ posts().length }} posts encontrados para
     <strong>{{ this.menuServ.selectedNavbarItem() }}</strong> ->
     <strong>{{ this.menuServ.selectedMenuItem() }}</strong>
   </i>
 </div>
 <div class="row d-flex">
   @for (post of posts(); track post.id) {
-  <app-post-item
-    [post]="post"
-    class="col-12 col-sm-6 col-xl-4 mt-4"
-  ></app-post-item>
+  <app-post-item [post]="post" class="col-12 col-sm-6 col-xl-4 mt-4"></app-post-item>
   }
 </div>
 }
