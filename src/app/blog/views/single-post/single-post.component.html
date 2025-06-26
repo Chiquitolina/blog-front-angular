@@ -1,23 +1,28 @@
 <div class="container">
   <div class="row d-flex justify-content-around g-0">
     <!-- Columna de post principal (debe estar primero en móviles) -->
-    <div
-      class="col-xl-6 order-1 order-md-2 col-md-8 bg-white d-flex h-25 flex-column align-items-center post-side"
-    >
+    <div class="col-xl-6 order-1 order-md-2 col-md-8 bg-white d-flex h-25 flex-column align-items-center post-side">
       @if (isLoadingSinglePost()) {
       <mat-spinner color="primary"></mat-spinner>
       } @else {
-      <img class="w-100 post-img mb-5" src="{{ post?.img }}" alt="" />
+      <img class="w-100 post-img mb-3" src="{{ post?.img }}" alt="" />
       <div class="info">
+        <div class="d-flex justify-content-between flex-column mb-4">
+          <span class="mt-2 text-primary category d-flex rounded w-50">{{ post?.categoria }}</span>
+
+          <span class="mt-2 w-75 text-secondary subcategory d-flex rounded">{{
+            post?.subcategoria
+            }}</span>
+        </div>
         <b class="century mt-3 post-title">{{ post?.titulo }}</b>
         <div class="w-100 d-flex justify-content-between mt-3">
           <div class="d-flex align-items-center">
             <mat-icon class="">calendar_today</mat-icon>
             <i class="mt-1" style="font-size: 12px">{{
               post?.createdAt | date : "MMMM d, y"
-            }}</i>
+              }}</i>
           </div>
-          <form class=" rounded w-25 d-flex justify-content-center" [formGroup]="formGroup">
+          <form class=" rounded w-50 d-flex justify-content-center" [formGroup]="formGroup">
             <p-rating (click)="openDialog()" formControlName="rating" />
             <!-- <p class="mt-2 av-rat">
               Average Rating:
@@ -45,36 +50,24 @@
     </div>
 
     <!-- Columna de post recientes -->
-    <div
-      class="col-xl-4 col-md-12 order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none"
-    >
+    <div class="col-xl-4 col-md-12 order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none">
       <h2 class="century mb-5 side">Posts recientes</h2>
       @for (recentPost of recentPosts; let i = $index; track recentPost) {
-      <div
-        class="d-flex align-items-center justify-content-between row sidepost bg-white rounded p-2"
-        [ngStyle]="{ 'animation-delay': i * 0.2 + 's' }"
-      >
-        <div class="d-flex justify-content-between mb-2">
-          <span
-            class="mt-2 text-primary category d-flex rounded mw-25 w-auto"
-            >{{ recentPost.categoria }}</span
-          >
+      <div class="d-flex align-items-center justify-content-between row sidepost bg-white rounded p-2"
+        [ngStyle]="{ 'animation-delay': i * 0.2 + 's' }">
+        <div class="d-flex justify-content-between flex-column mb-2">
+          <span class="mt-2 text-primary category d-flex rounded w-50">{{ recentPost.categoria }}</span>
 
-          <span style="width: 45%;" class="mt-2 text-secondary subcategory d-flex justify-content-center rounded">{{
+          <span class="mt-2 w-75 text-secondary subcategory d-flex rounded">{{
             recentPost.subcategoria
-          }}</span>
+            }}</span>
         </div>
-        <div class="col-5 mt-2 mb-2">
-          <img
-            class="rounded border w-100"
-            style="height: 9rem"
-            src="{{ recentPost.img }}"
-            alt=""
-          />
+        <div class="col-6 mt-2 mb-2">
+          <img class="rounded border w-100" style="height: 9rem" src="{{ recentPost.img }}" alt="" />
         </div>
-        <div class="col-7 mt-2 mb-2">
+        <div class="col-6 mt-2 mb-2">
           <a href="" [routerLink]="['/post', recentPost.id]">
-            <h3 class="century text-end">{{ recentPost.titulo }}</h3>
+            <h3 class="century text-end" style="font-weight: 600;">{{ recentPost.titulo }}</h3>
           </a>
         </div>
         <div class="d-flex align-items-center justify-content-end">
@@ -85,11 +78,7 @@
               }}</i>
           </div>-->
           <form style="width: 45%;" class="rounded d-flex justify-content-center mb-2">
-            <p-rating
-              [readonly]="true"
-              [(ngModel)]="recentPost.avgRating"
-              name="avgRating"
-            />
+            <p-rating [readonly]="true" [(ngModel)]="recentPost.avgRating" name="avgRating" />
           </form>
         </div>
       </div>
@@ -105,19 +94,13 @@
       </div>
       }
     </div>
-    <app-recent-post-carousel
-      class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-2 mt-5 col-md-8"
-      [recentPosts]="recentPosts"
-    ></app-recent-post-carousel>
+    <app-recent-post-carousel class="d-xl-none d-md-block d-sm-block d-block order-2 order-md-2 mt-5 col-md-8"
+      [recentPosts]="recentPosts"></app-recent-post-carousel>
   </div>
 </div>
 <div>
   <app-posts-display></app-posts-display>
 </div>
-<app-confirm-rating-dialog
-  (afterRated)="uploadRate()"
-  [visible]="isDialogVisible"
-  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }"
-  (visibleChange)="onDialogClosed()"
->
+<app-confirm-rating-dialog (afterRated)="uploadRate()" [visible]="isDialogVisible"
+  [data]="{ rating: formGroup.get('rating')?.value, postId: post?.id }" (visibleChange)="onDialogClosed()">
 </app-confirm-rating-dialog>

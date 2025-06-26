@@ -1,53 +1,36 @@
 <div class="row d-flex justify-content-md-center justify-content-center">
   <app-header></app-header>
 
-  <p-carousel
-    [value]="mostRatedPostByCategory"
-    [numVisible]="3"
-    [numScroll]="3"
-    [circular]="false"
-    [responsiveOptions]="responsiveOptions"
-  >
+  <p-carousel [value]="mostRatedPostByCategory" [numVisible]="3" [numScroll]="3" [circular]="false"
+    [responsiveOptions]="responsiveOptions">
     <ng-template let-mostRatedPost #item>
       <div class="row">
-        <div
-          class="col-12 col-xl-6 col-md-12 d-flex justify-content-center align-items-center"
-        >
-          <a
-            class="d-flex justify-content-center"
-            href=""
-            [routerLink]="['/post', mostRatedPost.id]"
-          >
+        <div class="col-12 col-xl-6 col-md-12 d-flex justify-content-center align-items-center">
+          <a class="d-flex justify-content-center" href="" [routerLink]="['/post', mostRatedPost.id]">
             <img class="h-100 home-img" [src]="mostRatedPost.img" alt="" />
           </a>
         </div>
         <div class="col-xl-5 col-md-12 col-12">
-          <div
-            class="d-flex justify-content-between mb-4 mt-xl-0 mt-md-4 mt-sm-4 mt-4"
-          >
-            <span class="text-primary category">{{
-              mostRatedPost.categoria
-            }}</span>
-            <span class="text-secondary subcategory">{{
-              mostRatedPost.subcategoria
-            }}</span>
+          <div class="d-flex justify-content-between flex-column mb-4 mt-xl-0 mt-md-4 mt-sm-4 mt-4">
+            <span class="mt-2 text-primary category d-flex rounded w-50">{{ mostRatedPost?.categoria }}</span>
+
+            <span class="mt-2 w-75 text-secondary subcategory d-flex rounded">{{
+              mostRatedPost?.subcategoria
+              }}</span>
           </div>
           <b class="century title">{{ mostRatedPost.titulo }}</b>
           <p class="text-secondary post-description mt-3">
             {{ mostRatedPost.descripcion }}
           </p>
-          <p-rating
-            class="w-25"
-            [readonly]="true"
-            [(ngModel)]="mostRatedPost.avgRating"
-            name="avgRating"
-            pTooltip="{{
+          <div class="d-flex justify-content-end w-100">
+          <div class="avg-rat rounded w-50 d-flex justify-content-center">
+            <p-rating [readonly]="true" [(ngModel)]="mostRatedPost.avgRating" name="avgRating" pTooltip="{{
               mostRatedPost.avgRating
                 ? 'Average Rating: ' + (+mostRatedPost.avgRating).toFixed(2)
                 : 'Sin calificación'
-            }}"
-            tooltipPosition="right"
-          />
+            }}" tooltipPosition="right" />
+          </div>
+          </div>
         </div>
       </div>
     </ng-template>

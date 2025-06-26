@@ -1,6 +1,6 @@
 img {
   border-radius: 0 2rem 0 0;
-  height: 12rem;
+  height: 14rem;
 }
 
 .century {
@@ -10,6 +10,35 @@ img {
 .post-info {
   font-size: 16px;
 }
+
+.category {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(13, 110, 253, 0.1);
+  font-size: 12px;
+}
+
+.subcategory {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(108, 117, 125, 0.1);
+  font-size: 12px;
+}
+
+form {
+  background-color: #c8e6d5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  display: flex;
+  justify-content: center;
+}
+
 
 .post-title {
   font-size: 1.5rem;

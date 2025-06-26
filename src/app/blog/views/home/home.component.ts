@@ -8,7 +8,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { PostRatingsService } from '../../../shared/services/postRatings/post-ratings.service';
 import { RatingModule } from 'primeng/rating';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
@@ -24,7 +29,8 @@ import { TooltipModule } from 'primeng/tooltip';
     RatingModule,
     FormsModule,
     TooltipModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -33,10 +39,12 @@ export class HomeComponent {
   mostRatedPostByCategory: any;
   responsiveOptions: any[] | undefined;
 
+  formGroup!: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private postRatingServ: PostRatingsService
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
     this.route.fragment.subscribe((fragment) => {
@@ -80,6 +88,6 @@ export class HomeComponent {
         console.error('Error al obtener los posts:', error);
       },
     });
-    
+
   }
 }
