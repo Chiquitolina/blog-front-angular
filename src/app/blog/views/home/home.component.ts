@@ -15,6 +15,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   standalone: true,
@@ -31,6 +32,7 @@ import { TooltipModule } from 'primeng/tooltip';
     TooltipModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

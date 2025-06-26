@@ -5,6 +5,7 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MenuService } from '../../../core/services/menu/menu.service';
+
 @Component({
   standalone: true,
   selector: 'app-posts-display',

@@ -2,28 +2,44 @@
   <h2 class="century">Posts recientes</h2>
 </div>
 
-<p-carousel [value]="recentPosts" [numVisible]="3" [numScroll]="3" [circular]="false"
-  [responsiveOptions]="responsiveOptions">
+<p-carousel
+  [value]="recentPosts"
+  [numVisible]="3"
+  [numScroll]="3"
+  [circular]="false"
+  [responsiveOptions]="responsiveOptions"
+>
   <ng-template let-recentPost #item>
     <div class="bg-white border-secondary rounded m-2 p-4 borde">
       <img class="rounded w-100 mb-2" [attr.src]="recentPost.img" alt="" />
-      <div class="d-flex justify-content-between flex-column mb-3 mt-xl-2 mt-md-4 mt-sm-4 mt-2">
-        <span class="mt-2 text-primary category d-flex rounded w-50">{{ recentPost?.categoria }}</span>
+      <div
+        class="d-flex justify-content-between flex-column mb-3 mt-xl-2 mt-md-4 mt-sm-4 mt-2"
+      >
+        <span class="mt-2 text-primary category d-flex rounded w-50">{{
+          recentPost?.categoria
+        }}</span>
 
         <span class="mt-2 w-75 text-secondary subcategory d-flex rounded">{{
           recentPost?.subcategoria
-          }}</span>
+        }}</span>
       </div>
       <strong class="century post-title mt-2">{{ recentPost.titulo }}</strong>
-      <div class="w-100 d-flex flex-sm-row flex-column justify-content-between rounded mt-3">
-      <!--  <div class="d-flex align-items-center">
+      <div
+        class="w-100 d-flex flex-sm-row flex-column justify-content-between rounded mt-3"
+      >
+        <!--  <div class="d-flex align-items-center">
           <mat-icon class="m-1">calendar_today</mat-icon>
           <i class="mt-1" style="font-size: 12px">{{
             recentPost.createdAt | date : "MMMM d, y"
             }}</i>
         </div>
         -->
-        <p-rating class=" av-rat rounded" [readonly]="true" [(ngModel)]="recentPost.avgRating" name="avgRating" />
+        <p-rating
+          class="av-rat rounded"
+          [readonly]="true"
+          [(ngModel)]="recentPost.avgRating"
+          name="avgRating"
+        />
       </div>
     </div>
   </ng-template>

@@ -4,7 +4,6 @@ import { CarouselModule } from 'primeng/carousel';
 import { MatIconModule } from '@angular/material/icon';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   standalone: true,
@@ -15,7 +14,6 @@ import { SkeletonModule } from 'primeng/skeleton';
     MatIconModule,
     RatingModule,
     FormsModule,
-    SkeletonModule
   ],
   templateUrl: './recent-post-carousel.component.html',
   styleUrl: './recent-post-carousel.component.scss',

@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 @import "primeicons/primeicons.css";
 
 * {
@@ -43,4 +45,11 @@ body {
   border: 1px solid #a2e6bebe;
   border-top: none;
   border-left: none;
+}
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: rgba(13, 110, 253, 0.1),
+  ));
 }
