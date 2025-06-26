@@ -27,7 +27,7 @@
         <p class=" text-secondary description">{{ post.descripcion }}</p>
       </div>
       <div class="d-flex justify-content-end">
-        <form class="rounded w-75">
+        <form class="rounded w-75 av-rat">
           <p-rating [readonly]="true" [(ngModel)]="post.avgRating" name="avgRating" pTooltip="{{
           post.avgRating
             ? 'Average Rating: ' + (+post.avgRating).toFixed(2)

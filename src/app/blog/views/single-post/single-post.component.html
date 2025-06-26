@@ -15,14 +15,14 @@
             }}</span>
         </div>
         <b class="century mt-3 post-title">{{ post?.titulo }}</b>
-        <div class="w-100 d-flex justify-content-between mt-3">
+        <div class="w-100 d-flex justify-content-between mt-4">
           <div class="d-flex align-items-center">
             <mat-icon class="">calendar_today</mat-icon>
             <i class="mt-1" style="font-size: 12px">{{
               post?.createdAt | date : "MMMM d, y"
               }}</i>
           </div>
-          <form class=" rounded w-50 d-flex justify-content-center" [formGroup]="formGroup">
+          <form class=" rounded w-50 d-flex justify-content-center av-rat" [formGroup]="formGroup">
             <p-rating (click)="openDialog()" formControlName="rating" />
             <!-- <p class="mt-2 av-rat">
               Average Rating:
@@ -51,9 +51,9 @@
 
     <!-- Columna de post recientes -->
     <div class="col-xl-4 col-md-12 order-2 order-md-1 d-xl-block d-md-none d-sm-none d-none">
-      <h2 class="century mb-5 side">Posts recientes</h2>
+      <h2 class="century mb-4 side">Posts recientes</h2>
       @for (recentPost of recentPosts; let i = $index; track recentPost) {
-      <div class="d-flex align-items-center justify-content-between row sidepost bg-white rounded p-2"
+      <div class="d-flex align-items-center justify-content-around row sidepost bg-white rounded p-2"
         [ngStyle]="{ 'animation-delay': i * 0.2 + 's' }">
         <div class="d-flex justify-content-between flex-column mb-2">
           <span class="mt-2 text-primary category d-flex rounded w-50">{{ recentPost.categoria }}</span>
@@ -62,7 +62,7 @@
             recentPost.subcategoria
             }}</span>
         </div>
-        <div class="col-6 mt-2 mb-2">
+        <div class="col-5 mt-2 mb-2">
           <img class="rounded border w-100" style="height: 9rem" src="{{ recentPost.img }}" alt="" />
         </div>
         <div class="col-6 mt-2 mb-2">
@@ -77,7 +77,7 @@
               recentPost.createdAt | date : "MMMM d, y"
               }}</i>
           </div>-->
-          <form style="width: 45%;" class="rounded d-flex justify-content-center mb-2">
+          <form style="width: 45%;" class="rounded d-flex justify-content-center mb-2 av-rat">
             <p-rating [readonly]="true" [(ngModel)]="recentPost.avgRating" name="avgRating" />
           </form>
         </div>

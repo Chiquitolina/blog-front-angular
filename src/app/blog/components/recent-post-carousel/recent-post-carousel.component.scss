@@ -30,7 +30,7 @@ div {
   font-size: 12px;
 }
 
-.avg-rat {
+.av-rat {
   background-color: #c8e6d5;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -38,6 +38,7 @@ div {
   padding-bottom: 0.15rem;
   display: flex;
   justify-content: center;
+  width: 50%;
 }
 
 .century {
@@ -56,6 +57,12 @@ div {
 
 @media (max-width: 576px) {
   img {
-    height: 13rem;
+    height: 11rem;
   }
+
+  .av-rat {
+    width: 100%;
+  }
+
+
 }

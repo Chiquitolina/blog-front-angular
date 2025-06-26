@@ -26,15 +26,21 @@ body {
 }
 
 .category {
-  border: 1px solid rgba(13, 110, 253, 0.1);
+  border: 1px solid rgba(13, 109, 253, 0.016);
   border-bottom: none;
-  border-left: none;
-  color: rgba(20, 111, 248, 0.562);
+  border-right: none;
+  color: rgba(20, 111, 248, 0.462);
 }
 
 .subcategory {
-  border: 1px solid rgba(184, 177, 183, 0.288);
-  border-bottom: none;
+  border: 1px solid rgba(184, 177, 183, 0.074);
+  border-top: none;
   border-left: none;
-  color: rgba(150, 144, 149, 0.795);
+  color: rgba(150, 144, 149, 0.64);
+}
+
+.av-rat {
+  border: 1px solid #a2e6bebe;
+  border-top: none;
+  border-left: none;
 }
