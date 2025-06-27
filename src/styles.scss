@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 @import "primeicons/primeicons.css";
 
@@ -32,6 +32,7 @@ body {
   border-bottom: none;
   border-right: none;
   color: rgba(20, 111, 248, 0.527);
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .subcategory {
@@ -39,12 +40,14 @@ body {
   border-top: none;
   border-left: none;
   color: rgba(150, 144, 149, 0.726);
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .av-rat {
   border: 1px solid rgba(162, 230, 190, 0.829);
-  border-top: none;
-  border-left: none;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 .datee {
@@ -59,9 +62,11 @@ body {
   padding-left: 1rem;
 }
 
-
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
-  @include mat.progress-spinner-overrides((active-indicator-color: rgba(13, 110, 253, 0.1),
-    ));
+  @include mat.progress-spinner-overrides(
+    (
+      active-indicator-color: rgba(13, 110, 253, 0.1),
+    )
+  );
 }
