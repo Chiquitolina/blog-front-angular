@@ -28,28 +28,40 @@ body {
 }
 
 .category {
-  border: 1px solid rgba(13, 109, 253, 0.016);
+  border: 1px solid rgba(13, 109, 253, 0.13);
   border-bottom: none;
   border-right: none;
-  color: rgba(20, 111, 248, 0.462);
+  color: rgba(20, 111, 248, 0.527);
 }
 
 .subcategory {
-  border: 1px solid rgba(184, 177, 183, 0.074);
+  border: 1px solid rgba(184, 177, 183, 0.178);
   border-top: none;
   border-left: none;
-  color: rgba(150, 144, 149, 0.64);
+  color: rgba(150, 144, 149, 0.726);
 }
 
 .av-rat {
-  border: 1px solid #a2e6bebe;
+  border: 1px solid rgba(162, 230, 190, 0.829);
   border-top: none;
   border-left: none;
 }
 
+.datee {
+  background-color: rgba(227, 236, 226, 0.603);
+  border: 1px solid rgba(180, 218, 175, 0.247);
+  border-bottom: none;
+  border-right: none;
+  width: 35%;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
-  @include mat.progress-spinner-overrides((
-    active-indicator-color: rgba(13, 110, 253, 0.1),
-  ));
+  @include mat.progress-spinner-overrides((active-indicator-color: rgba(13, 110, 253, 0.1),
+    ));
 }
