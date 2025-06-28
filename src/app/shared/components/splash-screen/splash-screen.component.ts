@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-splash-screen',
   imports: [],
   templateUrl: './splash-screen.component.html',
