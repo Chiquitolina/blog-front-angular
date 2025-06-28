@@ -40,7 +40,6 @@
   transform: translateX(100%);
 }
 
-/* 🔁 MOBILE: puertas arriba y abajo */
 @media (max-width: 575.98px) {
   .splash-container.animate .left-door {
     transform: translateY(-100%);

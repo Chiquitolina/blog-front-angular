@@ -1,4 +1,15 @@
 .container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .container {
+    margin-top: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
 }
