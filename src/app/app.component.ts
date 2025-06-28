@@ -4,19 +4,27 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ScrollUpService } from './shared/services/scroll-up/scroll-up.service';
 import { filter } from 'rxjs';
+import { SplashScreenComponent } from './shared/components/splash-screen/splash-screen.component';
+import { CommonModule } from '@angular/common';
+
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent, NavbarComponent],
+  imports: [RouterOutlet, FooterComponent, NavbarComponent, SplashScreenComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'devtacora';
+ splashHidden = false;
+
+  onSplashFinished() {
+    this.splashHidden = true;
+  }
 
   scrollUpServ = inject(ScrollUpService)
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngAfterViewInit() {
     this.router.events

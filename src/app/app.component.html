@@ -1,8 +1,9 @@
+<app-splash-screen [hidden]="splashHidden" (splashFinished)="onSplashFinished()"></app-splash-screen>
+
 <app-navbar></app-navbar>
 
-<div class="container bg-light" style="min-height: calc(100vh - 5rem - 2rem)
-;">
-  <router-outlet />
+<div class="container bg-light" style="min-height: calc(100vh - 5rem - 2rem);" [class.blur]="!splashHidden">
+  <router-outlet></router-outlet>
 </div>
-<app-footer></app-footer>
 
+<app-footer></app-footer>

@@ -23,8 +23,14 @@ body {
 
 .category,
 .subcategory,
-.avg-rat {
+.avg-rat,
+.datee {
   font-weight: 500;
+}
+
+.blur {
+  pointer-events: none;   // 🔒 bloquea clicks
+  user-select: none;      // 🔒 evita seleccionar texto
 }
 
 .category {
@@ -60,6 +66,7 @@ body {
   padding-bottom: 0.15rem;
   padding-right: 1rem;
   padding-left: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
