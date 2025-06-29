@@ -20,8 +20,8 @@ a {
   background-color: #c8e6d5;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.15rem;
-  padding-bottom: 0.15rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .subcategory {
@@ -108,7 +108,7 @@ h3:hover {
 
 .post-img {
   border-radius: 0 2rem 0 0;
-  height: 25rem;
+  height: 27rem;
 }
 
 .side {
@@ -181,6 +181,6 @@ h3:hover {
 
 @media (max-width: 576px) {
   .post-img {
-    height: 17rem;
+    height: 18rem;
   }
 }
