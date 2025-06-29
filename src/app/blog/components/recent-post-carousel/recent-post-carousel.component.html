@@ -15,11 +15,11 @@
       <div
         class="d-flex justify-content-between flex-column mb-3 mt-xl-2 mt-md-4 mt-sm-4 mt-2"
       >
-        <span class="mt-2 text-primary category d-flex rounded w-50">{{
+        <span class="mt-2 text-primary category d-flex w-50">{{
           recentPost?.categoria
         }}</span>
 
-        <span class="mt-2 w-75 text-secondary subcategory d-flex rounded">{{
+        <span class="mt-2 w-75 text-secondary subcategory d-flex">{{
           recentPost?.subcategoria
         }}</span>
       </div>
@@ -35,7 +35,7 @@
         </div>
         -->
         <p-rating
-          class="av-rat rounded"
+          class="av-rat"
           [readonly]="true"
           [(ngModel)]="recentPost.avgRating"
           name="avgRating"

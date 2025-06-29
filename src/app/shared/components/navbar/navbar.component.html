@@ -26,7 +26,7 @@
       >
         <!-- Iteración de categorías -->
         @for (item of items; track item) {
-        <li class="nav-item" (click)="onClickMenuItem(item.label); closeNavbar()">
+        <li class="nav-item mt-3" (click)="onClickMenuItem(item.label); closeNavbar()">
           <a
             class="nav-link text-center"
             [routerLink]="['']"
