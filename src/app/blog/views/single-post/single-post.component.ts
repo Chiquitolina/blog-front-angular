@@ -20,7 +20,8 @@ import { LinkedinAuthService } from '../../../core/services/linkedin-auth/linked
 import { RecentPostCarouselComponent } from '../../components/recent-post-carousel/recent-post-carousel.component';
 import { CategoryService } from '../../../shared/services/categories/category.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HtmlUnescapePipe } from '../../../html-unescape.pipe';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 @Component({
   standalone: true,
   selector: 'app-single-post',
@@ -36,6 +37,7 @@ import { HtmlUnescapePipe } from '../../../html-unescape.pipe';
     FormsModule,
     RecentPostCarouselComponent,
     MatProgressSpinnerModule,
+    NgxSkeletonLoaderModule,
   ],
   templateUrl: './single-post.component.html',
   styleUrl: './single-post.component.scss',

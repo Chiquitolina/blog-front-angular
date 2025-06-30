@@ -1,6 +1,6 @@
 img {
   border-radius: 0 2rem 0 0;
-  height: 12rem;
+  height: 16rem;
 }
 
 .century {
@@ -10,6 +10,35 @@ img {
 .post-info {
   font-size: 16px;
 }
+
+.category {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(13, 110, 253, 0.1);
+  font-size: 13px;
+}
+
+.subcategory {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  background-color: rgba(108, 117, 125, 0.1);
+  font-size: 13px;
+}
+
+.av-rat {
+  background-color: #c8e6d5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  display: flex;
+  justify-content: center;
+}
+
 
 .post-title {
   font-size: 1.5rem;
@@ -27,7 +56,7 @@ img {
   max-height: 10rem;
   display: -webkit-box; // Necessary for -webkit-line-clamp
   -webkit-box-orient: vertical; // Allows box orientation for clamping
-  -webkit-line-clamp: 3; // Limit the number of lines to 3
+  -webkit-line-clamp: 5; // Limit the number of lines to 3
   overflow: hidden; // Hide the overflowing content
   text-overflow: ellipsis; // Show "..." when content overflows
 
@@ -42,4 +71,28 @@ img {
   padding-bottom: 0.15rem;
   background-color: rgba(13, 110, 253, 0.1);
   font-size: 12px;
+}
+
+.circle-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.circle-overlayy {
+  position: absolute;
+  top: 55px;
+  left: 20px;
+}
+
+.circle-overlayyy {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+}
+
+.circle-overlayyyy {
+  position: absolute;
+  top: 230px;
+  right: 20px;
 }

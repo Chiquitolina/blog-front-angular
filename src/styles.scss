@@ -1,12 +1,16 @@
+@use "@angular/material" as mat;
+
 @import "primeicons/primeicons.css";
 
 * {
   font-family: "URW Geometric", sans-serif;
 }
+
 html,
 body {
   min-height: 100vh;
 }
+
 body {
   margin: 0;
 }
@@ -17,4 +21,59 @@ body {
   display: block;
 }
 
+.category,
+.subcategory,
+.avg-rat,
+.datee {
+  font-weight: 500;
+}
 
+.blur {
+  pointer-events: none;   // 🔒 bloquea clicks
+  user-select: none;      // 🔒 evita seleccionar texto
+}
+
+.category {
+  border: 1px solid rgba(13, 109, 253, 0.13);
+  border-bottom: none;
+  border-right: none;
+  color: rgba(51, 130, 249, 0.74);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.subcategory {
+  border: 1px solid rgba(184, 177, 183, 0.178);
+  border-top: none;
+  border-left: none;
+  color: rgba(150, 144, 149, 0.726);
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.av-rat {
+  border: 1px solid rgba(162, 230, 190, 0.829);
+  border-bottom: none;
+  border-right: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.datee {
+  background-color: rgba(227, 236, 226, 0.603);
+  border: 1px solid rgba(180, 218, 175, 0.247);
+  border-bottom: none;
+  border-right: none;
+  width: 35%;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.progress-spinner-overrides(
+    (
+      active-indicator-color: rgba(13, 110, 253, 0.1),
+    )
+  );
+}

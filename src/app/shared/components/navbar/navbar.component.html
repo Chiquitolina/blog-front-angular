@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg mb-4 pb-3 pt-3 bg-white" style="z-index: 7">
+<nav class="navbar navbar-expand-lg mb-0 pb-3 pt-3 bg-white" style="z-index: 7;">
   <div class="container-fluid">
     <!-- Logo -->
     <div class="d-flex align-items-center col-7">
@@ -26,7 +26,7 @@
       >
         <!-- Iteración de categorías -->
         @for (item of items; track item) {
-        <li class="nav-item" (click)="onClickMenuItem(item.label); closeNavbar()">
+        <li class="nav-item mt-3" (click)="onClickMenuItem(item.label); closeNavbar()">
           <a
             class="nav-link text-center"
             [routerLink]="['']"

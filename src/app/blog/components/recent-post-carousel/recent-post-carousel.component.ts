@@ -8,7 +8,13 @@ import { FormsModule } from '@angular/forms';
 @Component({
   standalone: true,
   selector: 'app-recent-post-carousel',
-  imports: [CarouselModule, CommonModule, MatIconModule, RatingModule, FormsModule],
+  imports: [
+    CarouselModule,
+    CommonModule,
+    MatIconModule,
+    RatingModule,
+    FormsModule,
+  ],
   templateUrl: './recent-post-carousel.component.html',
   styleUrl: './recent-post-carousel.component.scss',
 })

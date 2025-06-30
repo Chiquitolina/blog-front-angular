@@ -33,11 +33,44 @@
 .subcategory {
   padding-left: 1rem;
   padding-right: 1rem;
-    padding-top: 0.15rem;
+  padding-top: 0.15rem;
   padding-bottom: 0.15rem;
   background-color: rgba(108, 117, 125, 0.1);
   font-size: 12px;
 }
+
+.av-rat {
+  background-color: #c8e6d5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.circle-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.circle-overlayy {
+  position: absolute;
+  top: 55px;
+  left: 20px;
+}
+
+.circle-overlayyy {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+}
+
+.circle-overlayyyy {
+  position: absolute;
+  top: 230px;
+  right: 20px;
+}
+
 
 @media (max-width: 570px) {
 

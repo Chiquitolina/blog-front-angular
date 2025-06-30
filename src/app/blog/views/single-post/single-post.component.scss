@@ -16,12 +16,12 @@ a {
   color: #6c757d;
 }
 
-form {
+.av-rat {
   background-color: #c8e6d5;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.15rem;
-  padding-bottom: 0.15rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .subcategory {
@@ -31,6 +31,36 @@ form {
   padding-bottom: 0.15rem;
   background-color: rgba(108, 117, 125, 0.1);
   font-size: 12px;
+}
+
+.skeleton-card {
+  position: relative;
+  width: fit-content;
+}
+
+.circle-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #a2a2a2;
+}
+
+.circle-overlayy {
+  position: absolute;
+  top: 55px;
+  left: 20px;
+}
+
+.circle-overlayyy {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+}
+
+.circle-overlayyyy {
+  position: absolute;
+  top: 230px;
+  right: 20px;
 }
 
 
@@ -77,12 +107,12 @@ h3:hover {
 }
 
 .post-img {
-  border-radius: 0 5rem 0 5rem;
-  height: 25rem;
+  border-radius: 0 2rem 0 0;
+  height: 27rem;
 }
 
 .side {
-  animation: slideInFromLeft 1.5s ease-out;
+  animation: slideInFromLeft 0.8s ease-out;
 }
 
 .left-titles {
@@ -94,10 +124,10 @@ h3:hover {
 }
 
 .post-side {
-  border-radius: 0 5rem 0 5rem;
+  border-radius: 0 5rem 0 0;
   animation: slideInFromRight 1s ease-out;
   padding-bottom: 3rem;
-  box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.085);
 }
 
 .info {
@@ -151,6 +181,6 @@ h3:hover {
 
 @media (max-width: 576px) {
   .post-img {
-    height: 15rem;
+    height: 18rem;
   }
 }
