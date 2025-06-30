@@ -53,6 +53,13 @@ export class MenuComponent implements AfterViewInit {
     }
   }
 
+  scrollToThis() {
+            setTimeout(() => {
+          const element = document.getElementById('seccion');
+          element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+  }
+
   filterByItemSelected(category: string, subcategory: string) {
     this.postServ.getPostByCategory(category, subcategory).subscribe({
       next: (data) => {
@@ -60,11 +67,6 @@ export class MenuComponent implements AfterViewInit {
         this.postServ.setPosts(data.result.data);
         this.activeItem = subcategory;
         this.menuServ.updateSelectedMenuItem(subcategory);
-
-        setTimeout(() => {
-          const element = document.getElementById('seccion');
-          element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
       },
       error: (error: Error) => {
         console.log(error);
